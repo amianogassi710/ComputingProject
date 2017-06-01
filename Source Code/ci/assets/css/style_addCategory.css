@@ -1,0 +1,44 @@
+html{
+	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	background-size:cover;
+}
+
+.container1{
+	width:500px;
+	height:200px;
+	text-align:center;
+	background-color:rgba(52,73,94,0.6);
+	border-radius:4px;
+	margin:0 auto;
+	margin-top:290px;
+	margin-left:400px;
+	position:fixed;
+}
+
+
+input[type="text"]{
+	height:45px;
+	width:300px;
+	font-size:18px;
+	margin-bottom:20px;
+	background-color:#fff;
+	padding-left:20px;
+}
+
+.btn-reset{
+	padding:11px 19px;
+	color:#fff;
+	background-color:#2ECC71;
+	border:none;
+	border-radius:4px;
+	border-bottom:4px solid #27AE60;
+}
+
+.btn-add{
+	padding:11px 27px;
+	color:#fff;
+	background-color:#2ECC71;
+	border:none;
+	border-radius:4px;
+	border-bottom:4px solid #27AE60;
+}

@@ -1,0 +1,24 @@
+html{
+	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	background-size:cover;
+}
+
+.container1{
+	width:500px;
+	height:630px;
+	text-align:center;
+	background-color:rgba(52,73,94,0.6);
+	border-radius:4px;
+	margin:0 auto;
+	margin-top:65px;
+	margin-left:400px;
+	position:fixed;
+}
+
+th{
+	text-align: center;
+}
+
+table{
+	font-size: 1.4em;
+}
