@@ -52,9 +52,8 @@ class Customer extends CI_Controller {
 			$loginID=$this->CustomerModel->checkLogin($username,$password);
 			if($loginID){
 				if($loginID==1){
-					echo "admin";
+					$this->load->view('AdminDashboard');
 				} else{
-					$this->load->library('session');
 					$this->session->set_userdata('customerID',$loginID);
 					return redirect('Home/itemList');
 				}
@@ -65,6 +64,7 @@ class Customer extends CI_Controller {
 			$this->load->view('Login');
 		}
 	}
+	
 	
 }
 

@@ -4,48 +4,10 @@
 	<meta charset="utf-8">
 	<title>Paradise Food Land</title>
 	
-	<!-- jhigu milemagu
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-	
-
-	<link rel="stylesheet" href="css/nivo-lightbox.css">
-	<link rel="stylesheet" href="css/nivo_themes/default/default.css">
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
-	
-	-->
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/animate.min.css">
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css">
 </head>
 <body>
 
-<section class="preloader">
-	<div class="sk-spinner sk-spinner-pulse"></div>
-</section>
-
-
-<!-- navigation section -->
-<section class="navbar navbar-default navbar-fixed-top" role="navigation"> 
-	<div class="container">
-		<div class="navbar-header">
-			<a href="#" class="navbar-brand">PARADISE</a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#home" class="smoothScroll">HOME</a></li>
-				<li><a href="#gallery" class="smoothScroll">FOOD GALLERY</a></li>
-				<li><a href="#menu" class="smoothScroll">SPECIAL MENU</a></li>
-				<li><a href="#map" class="smoothScroll">MAP</a></li>
-				<li><a href="#contact" class="smoothScroll">CONTACT</a></li>
-				<li><a href="<?php echo site_url('Home/login') ?>"> LOGIN</a></li>
-			</ul>
-		</div>
-	</div>
-</section>
+<?php include 'public/public_nav.php'; ?>
 
 <!-- home section -->
 <section id="home">
@@ -228,25 +190,6 @@
 			</div>
 	</div>
 </section>
-
-
-  
-
-<!-- JAVASCRIPT JS FILES -->	
-<!--
-
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.parallax.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/nivo-lightbox.min.js"></script>
-
-
-
--->
-
-<script src="<?php echo base_url();?>assets/js/jquery.js"></script>
-<script src="<?php echo base_url();?>assets/js/custom.js"></script>
-<script src="<?php echo base_url();?>assets/js/wow.min.js"></script> <!--Animate.min.css-->
 
 </body>
 </html>

@@ -1,0 +1,138 @@
+
+/* line 2, ../scss/1-base/_reset.scss */
+*, *:before, *:after {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0px;
+  font-size: 100%;
+  font: inherit;
+}
+
+/*------------------------------------*\
+-------- Framework
+\*------------------------------------*/
+/* line 2, ../scss/2-framework/_typography.scss */
+body, input {
+  font-family: "Gudea";
+  font-size: 16px;
+  color: #525252;
+  line-height: 100%;
+}
+
+/* line 5, ../scss/2-framework/_typography.scss */
+h1, h1 a,
+h2, h2 a,
+h3, h3 a,
+h4, h4 a,
+h5, h5 a {
+  font-family: "Asap";
+  color: #262626;
+  line-height: 1.200em;
+  margin-bottom: 20px;
+}
+
+/* line 11, ../scss/2-framework/_typography.scss */
+h1 {
+  font-size: 38.08px;
+}
+
+/* line 12, ../scss/2-framework/_typography.scss */
+h2 {
+  font-size: 2.000em;
+}
+
+/* line 13, ../scss/2-framework/_typography.scss */
+h3 {
+  font-size: 25.6px;
+}
+
+/* line 14, ../scss/2-framework/_typography.scss */
+h4 {
+  font-size: 22px;
+}
+
+/* line 15, ../scss/2-framework/_typography.scss */
+h5 {
+  font-size: 17.6px;
+}
+
+/* line 18, ../scss/2-framework/_typography.scss */
+p {
+  font-size: 18px;
+  line-height: 1.750em;
+}
+
+/* line 19, ../scss/2-framework/_typography.scss */
+p + p {
+  margin-top: 20px;
+}
+
+/* line 21, ../scss/2-framework/_typography.scss */
+ul li, ol li {
+  margin: 10px 0px 10px 40px;
+  font-size: 0.933em;
+  line-height: 1.650em;
+}
+
+/* line 23, ../scss/2-framework/_typography.scss */
+ul + p, ol + p,
+p + h1, p + h2, p + h3, p + h4, p + h5 {
+  margin-top: 30px;
+}
+
+/* line 26, ../scss/2-framework/_typography.scss */
+p + ul, p + ol {
+  margin-top: 10px;
+}
+
+/* line 28, ../scss/2-framework/_typography.scss */
+strong {
+  font-weight: 700;
+}
+
+/* line 29, ../scss/2-framework/_typography.scss */
+em {
+  font-style: italic;
+}
+
+/* line 30, ../scss/2-framework/_typography.scss */
+a {
+  color: #3C8FC7;
+  text-decoration: none;
+}
+
+/* line 31, ../scss/2-framework/_typography.scss */
+a:hover {
+  text-decoration: underline;
+}
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url("../fonts/fontawesome-webfont.eot");
+  src: url("../fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf?") format("truetype"), url("../fonts/fontawesome-webfont.svg#fontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/*------------------------------------*\
+-------- General Styles
+\*------------------------------------*/
+/* line 36, ../scss/main.scss */
+html, body {
+  height: 100%;
+  background: #fff;
+  margin-top: -5px;
+}
+
+/* line 41, ../scss/main.scss */
+.main {
+  width: 650px;
+  margin: 0px auto;
+}
+
+
+

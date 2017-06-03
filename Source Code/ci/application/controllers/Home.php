@@ -19,15 +19,15 @@ class Home extends CI_Controller {
 	
 	public function itemList()
 	{
+	if($this->session->userdata('customerID')){
 		$this->load->view('ItemList');
+	} else{
+		$this->load->view('Login');
+	}
 	}
 	
 	public function addCategory(){
 		$this->load->view('AddNewCategory');
-	}	
-	
-	public function selectCategory(){
-		$this->load->controller('Manager/selectCategory');
 	}		
 	
 	public function updateCategory(){
