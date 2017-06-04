@@ -13,8 +13,8 @@
 
 <div class="container1">
 	<h1> Add New Item </h1>
-	<form action="<?php echo base_url();?>Manager/addItem" method="post">
-		<div class="form-input">
+	<?php echo form_open_multipart('Manager/addItems');?>
+	<div class="form-input">
 			<input type="text" placeholder="Item Name" name="itemName"> <br>
 			<input type="text" placeholder="Item Price" name="itemPrice"> <br>
 			<input type="file" placeholder="Item Image" name="itemImage"> <br>
@@ -33,8 +33,8 @@
 			</div>			
 			<textarea name="itemDescription" placeholder="Description of Item" rows="5" cols="40" class="mytextarea"> </textarea> <br>
 			<button type="reset" class="btn-reset"> RESET </button>
-			<button type="submit" name="add" class="btn-add"> ADD </button>
-			
+			<input type="submit" value="ADD" name="add" class="btn-add" />
+
 		</div>
 	</form>
 </div>

@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manager extends CI_Controller {
 
+	// Add New Category
 	public function addCategory() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('categoryName', 'Category Name', 'required|trim|max_length[20]');
@@ -19,12 +20,14 @@ class Manager extends CI_Controller {
 		}
 	}
 	
+	// Select All Category
 	public function listCategory() {
 		$this->load->model('ManagerModel');
 		$data['records']=$this->ManagerModel->listAllCategory();
 		$this->load->view('SelectAllCategory',$data);
 	}
 	
+	// Update Category
 	public function listCategoryUpdate() {
 		$this->load->model('ManagerModel');
 		$data['records']=$this->ManagerModel->listAllCategory();
@@ -50,6 +53,7 @@ class Manager extends CI_Controller {
 		}
 	}
 	
+	// Delete Category
 	public function listCategoryDelete() {
 		$this->load->model('ManagerModel');
 		$data['records']=$this->ManagerModel->listAllCategory();
@@ -65,15 +69,15 @@ class Manager extends CI_Controller {
 			echo "Not done";
 		}
 	}
-
+	
+	// Add New Items
 	public function listCategoryAddItem() {
 		$this->load->model('ManagerModel');
-
 		$data['records']=$this->ManagerModel->listAllCategory();
 		$this->load->view('AddNewItems',$data);
 	}
 	
-	public function addItem() {
+	public function addItems() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('itemName', 'Item Name', 'required|trim|max_length[25]');
 		$this->form_validation->set_rules('itemPrice', 'Item Price', 'required|numeric|trim|max_length[4]');
@@ -81,20 +85,30 @@ class Manager extends CI_Controller {
 		$this->form_validation->set_rules('itemDescription', 'Item Description', 'required|trim|max_length[100]');
 		
 		if($this->form_validation->run()){
+			$config['upload_path']="assets/images";
+			$config['allowed_types']='gif|jpg|png';
+				
+			$this->load->library('upload',$config);
+			$this->upload->do_upload('itemImage');
+			
+			$data=array('upload_data'=>$this->upload->data());
+			
 			$itemName=$this->input->post('itemName');
+			$itemImage=$data['upload_data']['file_name'];
 			$itemPrice=$this->input->post('itemPrice');
 			$categoryID=$this->input->post('categoryID');
 			$itemDescription=$this->input->post('itemDescription');
-			
+				
 			$this->load->model('ManagerModel');
-			$data['ManagerMessage']=$this->ManagerModel->addNewItem
-							($itemName,$itemPrice,$categoryID,$itemDescription);
+			$this->ManagerModel->addNewItems
+								($itemName,$itemImage,$itemPrice,$categoryID,$itemDescription);
 			echo "Done";
-		} else {
+		}else {
 			echo validation_errors();
 		}
 	}
 	
+	// List All Items with Category
 	public function listItemWithCategory() {
 		$this->load->model('ManagerModel');
 		$data['records']=$this->ManagerModel->listAllItem();
@@ -110,28 +124,21 @@ class Manager extends CI_Controller {
 	}
 
 	public function hello(){
-	
-$fullname=$this->input->post('fullname');
-echo 'Hello'.$fullname;		
-	}
-	public function check(){
-				$this->load->view('ss');
-
-	}
-	
-	public function upload(){
-		$config['upload_path']="./assets/images/";
-		$config['allowed_types']='jpg|jpeg|gif|png';
-		$this->load->library('upload',$config);
-		if (!$this->upload->do_upload()){
-			$error=array('error'=>$this->upload->display_errors());
-			$this->load->view('main_view',$error);
+		$fullname=$this->input->post('fullname');
+		$this->load->model('ManagerModel');
+			$data['ManagerMessage']=$this->ManagerModel->loadItemWithCategory
+							($fullname);
+			// echo "Done";
+		// echo $fullname;		
+		
+		echo "<pre>";
+			print_r ($data);
 		}
-		else{
-			$file_data=$this->upload->data();
-			$data['img']=base_url().'/images/'.$file_data['file_name'];
-echo "done";		}
-	}
 	
+	
+	public function check(){
+		$this->load->view('ss');
+	}
+ 
 }
 ?>
