@@ -57,12 +57,43 @@ class ManagerModel extends CI_Model{
 		$q=$this->db->get('item');
 		return $q->result();
 	}
-	
+		
+	// List All Customers
 	public function listAllCustomer(){
 		$q=$this->db->get('customer');
 		return $q->result();
-	}	
+	}
+
+	// Update Items
+	public function searchItem($itemID){
+		$this->db->select('*');
+		$this->db->from('item');
+		$this->db->join('category','category.categoryID=item.categoryID');
+		$this->db->where('itemID',$itemID);
+
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
+	public function findItem($itemID){
+		$this->db->where("itemID",$itemID);
+		$result=$this->db->get("item");
+		return $result->result();
+	}
+	
+	public function updateItem($itemID,$itemName,$itemPrice,$itemDescription){
+	$arr=array("itemID"=>$itemID,
+				"itemName"=>$itemName,
+				"itemPrice"=>$itemPrice,
+				"itemDescription"=>$itemDescription,
+			);
+		$this->db->where("itemID",$itemID);
+		$this->db->update('item',$arr);
+		return "data updated";
+	}
+	
+	
+	// List All Items with Category	
 	public function loadItemWithCategory($fullname){
 		$this->db->select('itemName');
 		$this->db->from('item');
@@ -70,7 +101,7 @@ class ManagerModel extends CI_Model{
 		$this->db->where('category.categoryName',$fullname);
 
 		$query = $this->db->get();
-		return $query->result();
+		return $query->result();	
 	}
 	
 	
@@ -80,38 +111,11 @@ class ManagerModel extends CI_Model{
 	public function insertdata(){
 		echo "Amam";
 	}
-	public function getImage($image){
-		$arr=array(
-			'filepath'=>$image
-		);
-		$this->db->insert("images",$arr);
-	}
+	
 	public function retriveImage($path){
 		$this->db->where('id',$path);
 		return $this->db->get("images");
 	}
-
-	public function insert_data($name, $path_name){
-    $data = array(
-                  'name'    => $name,
-                  'filepath'    => $path_name
-                 );
-print_r ($data);exit;
-    $this->db->insert('images', $data);
-
-    return $this->db->insert_id();
-}
-
-function register_user($itemPrice,$image)
-    {
-
-          $data= array('name'=>$itemPrice,
-        'filepath'=>$image
-        );
-       $res= $this->db->insert('images', $data); //register is my table name
-        return $res;
-        var_dump($res);
-    }
 
 }
 ?>

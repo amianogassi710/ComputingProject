@@ -15,6 +15,18 @@ html{
 	position:fixed;
 }
 
+.container2{
+	width:300px;
+	height:455px;
+	text-align:center;
+	background-color:rgba(52,73,94,0.6);
+	border-radius:4px;
+	margin:0 auto;
+	margin-top:100px;
+	margin-left:400px;
+	position:fixed;
+}
+
 
 input[type="text"]{
 	height:45px;

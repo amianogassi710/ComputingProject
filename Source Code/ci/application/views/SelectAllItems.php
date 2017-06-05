@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Paradise Food Land</title>
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_selectCategory.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_selectItem.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/defaults.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/demo.css">
@@ -24,11 +24,8 @@
 <script>
 	$(document).ready(function(){
     $("#Breakfast").click(function(){
-        alert ('xx');
 		var fullname=$('#myBreakfast').val();
 		var aa=document.getElementById("myBreakfast").value;
-		alert (aa);
-		alert (fullname);
 		$.ajax({
 			type:'POST',
 			data:{fullname: fullname},
@@ -52,6 +49,23 @@ $(document).ready(function(){
 			url:'<?php echo site_url('Manager/hello'); ?>',
 			success: function(result){
 				$('#ourSnacks').html(result);
+			}
+		});
+    });
+});
+$(document).ready(function(){
+    $("#Soup").click(function(){
+        alert ('yy');
+		var fullname=$('#mySoup').val();
+		var aa=document.getElementById("mySoup").value;
+		alert (aa);
+		alert (fullname);
+		$.ajax({
+			type:'POST',
+			data:{fullname: fullname},
+			url:'<?php echo site_url('Manager/hello'); ?>',
+			success: function(result){
+				$('#ourSoup').html(result);
 			}
 		});
     });
@@ -81,14 +95,8 @@ $(document).ready(function(){
 				<span id="our<?php echo $row->categoryName; ?>"> </span>
 				<br>
 				
-				<?php
-					foreach($records as $row){ 
-						// echo "<a href='".$row['itemName']."'>".$row['itemName']."<br>"."</a>"; // Write an anchor with the url as href, and text as value/content
-					?>	 
-					<a href="#"> <?php echo $row->itemName; ?> </a> <br>
-					<?php
-					}
-				?>
+				
+				
 				
 			</div><!--end .accordion-section-content-->
 		</div><!--end .accordion-section-->

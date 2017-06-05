@@ -108,6 +108,73 @@ class Manager extends CI_Controller {
 		}
 	}
 	
+	//List All Customers
+	public function listCustomer() {
+		$this->load->model('ManagerModel');
+		$data['records']=$this->ManagerModel->listAllCustomer();
+		$this->load->view('SelectAllCustomer',$data);
+	}
+	
+	// Update Items
+	public function listItemUpdate() {
+		// $this->load->model('ManagerModel');
+		// $data['records']=$this->ManagerModel->listAllItem();
+		// $this->load->view('UpdateItems',$data);
+		$this->load->model('ManagerModel');
+		$data['records']=$this->ManagerModel->listAllItem();
+		$datas['record']=$this->ManagerModel->listAllCategory();
+		$load=TRUE;
+		$data1['load']=$load;
+		$all=$data + $datas + $data1;
+		$this->load->view('UpdateItemList',$all);
+	}
+	
+	public function selectItemDescription(){
+		$itemID=$this->input->post('itemID');
+			
+		$this->load->model('ManagerModel');
+		$data['itemDesc']=$this->ManagerModel->searchItem
+				($itemID);
+		$load=FALSE;
+		$data1['load']=$load;
+		$all=$data + $data1;
+		$this->load->view('UpdateItemList',$all);
+		
+	}
+	
+	public function editItem($itemID){
+		$this->load->model('ManagerModel');
+		$item=$this->ManagerModel->findItem($itemID);
+		$this->load->view('UpdateItems',['item'=>$item]);
+	}
+	
+	public function updateItem(){
+		
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('hiddenID', 'Hidden ID', 'required');
+		$this->form_validation->set_rules('itemName', 'Item Name', 'required|trim|max_length[25]');
+		$this->form_validation->set_rules('itemPrice', 'Item Price', 'required|numeric|trim|max_length[4]');
+		$this->form_validation->set_rules('itemDescription', 'Item Description', 'required|trim|max_length[100]');
+		
+		if($this->form_validation->run()){
+			$itemID=$this->input->post('hiddenID');
+			$itemName=$this->input->post('itemName');
+			$itemPrice=$this->input->post('itemPrice');
+			$itemDescription=$this->input->post('itemDescription');
+				
+			$this->load->model('ManagerModel');
+			$check=$this->ManagerModel->updateItem($itemID,$itemName,
+							$itemPrice,$itemDescription);
+			if ($check){
+			echo "Done";
+			} else{
+				echo "Not done";
+			}
+		}else {
+			echo validation_errors();
+		}
+	}
+	
 	// List All Items with Category
 	public function listItemWithCategory() {
 		$this->load->model('ManagerModel');
@@ -116,24 +183,20 @@ class Manager extends CI_Controller {
 		$all=$data + $datas;
 		$this->load->view('SelectAllItems',$all);
 	}
-	
-	public function listCustomer() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllCustomer();
-		$this->load->view('SelectAllCustomer',$data);
-	}
 
 	public function hello(){
 		$fullname=$this->input->post('fullname');
 		$this->load->model('ManagerModel');
 			$data['ManagerMessage']=$this->ManagerModel->loadItemWithCategory
 							($fullname);
-			// echo "Done";
-		// echo $fullname;		
-		
 		echo "<pre>";
-			print_r ($data);
-		}
+		print_r ($data);
+		
+		foreach( $data as $e ) {
+			echo '<tr><th>', $e[0], '</th><td>', join('</td><td>', $e[1]), "</td></tr>\n";
+		}		
+	}
+	
 	
 	
 	public function check(){

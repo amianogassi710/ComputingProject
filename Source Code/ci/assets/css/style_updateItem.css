@@ -1,0 +1,60 @@
+html{
+	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	background-size:cover;
+}
+
+.container1{
+	width:800px;
+	text-align:center;
+	border-radius:4px;
+	margin-top:255px;
+	margin-left:330px;
+	padding-bottom:20px;
+	position:absolute;
+	background-color:rgba(52,73,94,0.6);
+
+}
+
+.styled-select select {
+  width: 300px;
+  font-size:16pt;
+  color:black;
+  border: 0;
+  height: 45px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+
+.btn-add{
+	padding:11px 19px;
+	color:#fff;
+	background-color:#2ECC71;
+	border:none;
+	border-radius:4px;
+	border-bottom:4px solid #27AE60;
+}
+
+.btn-reset{
+	padding:11px 19px;
+	color:#fff;
+	background-color:#2ECC71;
+	border:none;
+	border-radius:4px;
+	border-bottom:4px solid #27AE60;
+}
+
+.back{
+    margin-left: 23px;
+    margin-top: 29px;
+    position: absolute;
+    font-size: 23px;
+}
+
+th{
+	text-align: center;
+}
+
+table{
+	font-size: 1.4em;
+}

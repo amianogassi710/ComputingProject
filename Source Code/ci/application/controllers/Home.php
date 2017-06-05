@@ -41,4 +41,8 @@ class Home extends CI_Controller {
 	public function admin(){
 		$this->load->view('AdminDashboard');
 	}	
+	
+	public function updateItems(){
+		$this->load->view('UpdateItems');
+	}
 }

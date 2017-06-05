@@ -27,7 +27,7 @@
 	<button class="accordion">Update</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/listCategoryUpdate');?>"> Update Category </a> <br>
-		<a href="<?php echo site_url('Manager/listCategoryUpdate');?>"> Update Items </a> <br>
+		<a href="<?php echo site_url('Manager/listItemUpdate');?>"> Update Items </a> <br>
 	</div>
 	
 	<button class="accordion">Delete</button>
