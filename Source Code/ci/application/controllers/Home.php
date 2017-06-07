@@ -45,4 +45,10 @@ class Home extends CI_Controller {
 	public function updateItems(){
 		$this->load->view('UpdateItems');
 	}
+	
+	public function deactivateCustomer(){
+		$load=TRUE;
+		$data['load']=$load;
+		$this->load->view('DeactivateCustomer',$data);
+	}
 }

@@ -175,6 +175,50 @@ class Manager extends CI_Controller {
 		}
 	}
 	
+	// Delete Item
+	public function listCategoryForDelete() {
+		$this->load->model('ManagerModel');
+		$data['records']=$this->ManagerModel->listAllCategory();
+		$load=TRUE;
+		$data1['load']=$load;
+		$all=$data + $data1;
+		$this->load->view('DeleteItem',$all);
+	}
+	
+	public function searchItemsWithCategory(){
+		$categoryID=$this->input->post('categoryID');
+		$this->load->model('ManagerModel');
+		$data['records']=$this->ManagerModel->searchItemsWithCategory
+				($categoryID);
+		$load=FALSE;
+		$data1['load']=$load;
+		$all=$data + $data1;
+		$this->load->view('DeleteItem',$all);
+	}
+	
+	public function deleteItem($itemID){
+		$this->load->model('ManagerModel');
+		$check=$this->ManagerModel->removeItem($itemID);
+		if ($check){
+			echo "Done";
+		} else{
+			echo "Not done";
+		}
+	}
+	
+	public function searchCustomer(){
+		$customerID=$this->input->post('customerID');
+		$customerFirstName=$this->input->post('customerFirstName');
+		$customerLastName=$this->input->post('customerLastName');
+		$this->load->model('ManagerModel');
+		$data['records']=$this->ManagerModel->searchSpecificCustomer
+				($customerID,$customerFirstName,$customerLastName);
+		$load=FALSE;
+		$data1['load']=$load;
+		$all=$data + $data1;
+		$this->load->view('DeactivateCustomer',$all);
+	}
+	
 	// List All Items with Category
 	public function listItemWithCategory() {
 		$this->load->model('ManagerModel');

@@ -92,6 +92,33 @@ class ManagerModel extends CI_Model{
 		return "data updated";
 	}
 	
+	// Delete Item
+	public function searchItemsWithCategory($categoryID){
+		$this->db->select('*');
+		$this->db->from('item');
+		$this->db->where('categoryID',$categoryID);
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+	public function removeItem($itemID){
+		$this->db->where("itemID",$itemID);
+		$result=$this->db->delete("item");
+		return "data deleted";
+	}
+
+	// Deactivate Customer
+	public function searchSpecificCustomer
+				($customerID,$customerFirstName,$customerLastName){
+		$this->db->select('*');
+		$this->db->from('customer');
+		$this->db->where('customerID',$customerID);
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
 	
 	// List All Items with Category	
 	public function loadItemWithCategory($fullname){

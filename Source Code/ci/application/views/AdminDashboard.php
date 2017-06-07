@@ -33,7 +33,8 @@
 	<button class="accordion">Delete</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/listCategoryDelete');?>"> Delete Category </a> <br>
-		<a href="<?php echo site_url('Manager/listCategoryDelete');?>"> Delete Items </a> <br>
+		<a href="<?php echo site_url('Manager/listCategoryForDelete');?>"> Delete Items </a> <br>
+		<a href="<?php echo site_url('Home/deactivateCustomer');?>"> Deactivate Customer </a> <br>
 	</div>
 	
 </div>

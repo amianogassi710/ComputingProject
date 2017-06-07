@@ -11,7 +11,7 @@
 <?php include 'public/public_nav.php'; ?>
 
 <div class="container1">
-	<h1> Category List </h1>
+	<h1> Item List </h1>
 	<table class="table">
 		<thead>
 			<th> Name </th>
