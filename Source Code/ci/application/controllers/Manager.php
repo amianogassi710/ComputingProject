@@ -206,6 +206,7 @@ class Manager extends CI_Controller {
 		}
 	}
 	
+	// Deactivate Customer
 	public function searchCustomer(){
 		$customerID=$this->input->post('customerID');
 		$customerFirstName=$this->input->post('customerFirstName');
@@ -217,6 +218,31 @@ class Manager extends CI_Controller {
 		$data1['load']=$load;
 		$all=$data + $data1;
 		$this->load->view('DeactivateCustomer',$all);
+	}
+	
+	public function deleteCustomer($customerID){
+		$this->load->model('ManagerModel');
+		$check=$this->ManagerModel->deactivateCustomer($customerID);
+		if ($check){
+			echo "Done";
+		} else{
+			echo "Not done";
+		}
+	}
+	
+	// Change Item Status
+	public function checkStatus(){
+		$this->load->model('ManagerModel');
+		$check['records']=$this->ManagerModel->checkItemStatus();
+		$this->load->view('ChangeItemStatus',$check);
+	}
+	
+	public function changeStatus(){
+		$itemID= $this->input->post('itemID');
+		$itemStatus= $this->input->post('itemStatus');
+		$this->load->model('ManagerModel');
+		$check['records']=$this->ManagerModel->changeItemStatus($itemID,$itemStatus);
+		echo "done";
 	}
 	
 	// List All Items with Category

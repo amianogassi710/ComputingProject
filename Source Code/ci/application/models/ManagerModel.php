@@ -114,11 +114,35 @@ class ManagerModel extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('customer');
 		$this->db->where('customerID',$customerID);
+		$this->db->or_where('customerFirstName',$customerFirstName);
+		$this->db->or_where('customerLastName',$customerLastName);
 
 		$query = $this->db->get();
 		return $query->result();
 	}
 	
+	public function deactivateCustomer($customerID){
+		$this->db->where('customerID',$customerID);
+		$result=$this->db->delete("customer");
+		return "data deleted";
+	}
+	
+	// Change Item Status
+	public function checkItemStatus(){
+		$this->db->select('*');
+		$this->db->from('item');
+		$query = $this->db->get();
+		return $query->result();	
+	}
+	
+	public function changeItemStatus($itemID,$itemStatus){
+		$arr=array("itemID"=>$itemID,
+				"itemStatus"=>$itemStatus
+			);
+		$this->db->where("itemID",$itemID);
+		$this->db->update('item',$arr);
+		return "data updated";	
+	}
 	
 	// List All Items with Category	
 	public function loadItemWithCategory($fullname){

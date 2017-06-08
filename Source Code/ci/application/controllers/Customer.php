@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Customer extends CI_Controller {
 
+	// Register User
 	public function register(){
 		
 		$this->load->library('form_validation');
@@ -38,6 +39,7 @@ class Customer extends CI_Controller {
 		}
 	}	
 	
+	// Customer Login
 	public function login(){ 
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'UserName', 'required|trim|min_length[7]|max_length[20]');
@@ -55,7 +57,7 @@ class Customer extends CI_Controller {
 					$this->load->view('AdminDashboard');
 				} else{
 					$this->session->set_userdata('customerID',$loginID);
-					return redirect('Home/itemList');
+					return redirect('Customer/listItem');
 				}
 			} else {
 				echo ("Password not match");
@@ -65,6 +67,96 @@ class Customer extends CI_Controller {
 		}
 	}
 	
+	// Show Menu For Customer
+	public function listItem(){
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			echo $sessionData;
+		} else{
+			echo "sorry";
+		}
+		
+		$this->load->library('pagination');
+		$this->load->model('CustomerModel');
+
+
+		$config['base_url'] = base_url('Customer/index');
+		
+		$config['per_page'] = ($this->input->get('limitRows')) ? $this->input->get('limitRows') : 10;
+		$config['enable_query_strings'] = TRUE;
+		$config['page_query_string'] = TRUE;
+		$config['reuse_query_string'] = TRUE;
+
+
+		 // integrate bootstrap pagination
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+       
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = 'Prev';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = 'Next';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'?per_page=0">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+		$data['page'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+		$data['searchFor'] = ($this->input->get('query')) ? $this->input->get('query') : NULL;
+		$data['orderField'] = ($this->input->get('orderField')) ? $this->input->get('orderField') : '';
+		$data['orderDirection'] = ($this->input->get('orderDirection')) ? $this->input->get('orderDirection') : '';
+		$data['citylist'] = $this->CustomerModel->get_city($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
+		$config['total_rows'] = $this->CustomerModel->count_city($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
+		$this->pagination->initialize($config);
+		$data['pagination'] = $this->pagination->create_links();
+		$this->load->view('ListAllItems', $data);
+	}
+	
+	// Add Items To Cart
+	public function addToCart($itemID){
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('CustomerModel');
+			
+			$data['CartMessage']=$this->CustomerModel->addItemToCart
+							($sessionData,$itemID);
+			redirect(site_url('Customer/listItem'));					
+		} else{
+			echo "sorry";
+		}
+	}
+	
+	public function showCart(){
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('CustomerModel');
+			
+			$cartItem=$this->CustomerModel->showItemsInCart
+							($sessionData);
+			//redirect(site_url('Customer/listItem'));	
+		$this->load->view('Check',['cartItem'=>$cartItem]);
+			
+		} else{
+			echo "sorry";
+		}
+		//$this->load->view('MyCart');
+	}
+	
+	public function deleteCartItem($cartID){
+		$this->load->model('CustomerModel');
+		$check=$this->CustomerModel->deleteItemInCart($cartID);
+		if ($check){
+			redirect(site_url('Customer/showCart'));
+		} else{
+			echo "Not done";
+		}
+	}
 	
 }
 

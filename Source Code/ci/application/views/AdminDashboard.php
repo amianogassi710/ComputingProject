@@ -34,7 +34,16 @@
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/listCategoryDelete');?>"> Delete Category </a> <br>
 		<a href="<?php echo site_url('Manager/listCategoryForDelete');?>"> Delete Items </a> <br>
+	</div>
+	
+	<button class="accordion">Deactivate Customer</button>
+	<div class="panel">
 		<a href="<?php echo site_url('Home/deactivateCustomer');?>"> Deactivate Customer </a> <br>
+	</div>
+	
+	<button class="accordion">Change Item Status</button>
+	<div class="panel">
+		<a href="<?php echo site_url('Manager/checkStatus');?>"> Change Item Status </a> <br>
 	</div>
 	
 </div>

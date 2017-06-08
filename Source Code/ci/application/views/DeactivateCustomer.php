@@ -31,7 +31,7 @@
 <div class="container2">
 <h1> Select Item for Delete</h1>
 	<div class="back">
-		<a href="<?php echo site_url('Manager/listCategoryForDelete') ?>">Back</a>
+		<a href="<?php echo site_url('Home/DeactivateCustomer') ?>">Back</a>
 	</div>
 	<table class="table">
 		<thead>
@@ -47,7 +47,7 @@
 				<td> <?=$row->customerFirstName ?> </td>
 				<td> <?=$row->customerLastName ?> </td>
 				<td> 
-					<?php echo anchor("Manager/deleteItem/{$row->customerID}", 'Delete', ['class'=>"btn btn-danger"]); ?> 
+					<?php echo anchor("Manager/deleteCustomer/{$row->customerID}", 'Delete', ['class'=>"btn btn-danger"]); ?> 
 				</td>
 			</tr>
 		<?php 
