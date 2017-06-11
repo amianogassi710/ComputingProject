@@ -51,4 +51,12 @@ class Home extends CI_Controller {
 		$data['load']=$load;
 		$this->load->view('DeactivateCustomer',$data);
 	}
+	
+	public function orderedOut(){
+		$this->load->view('orderedOut');
+	}
+	
+	public function fade(){
+		$this->load->view('fade');
+	}
 }

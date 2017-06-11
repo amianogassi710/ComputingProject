@@ -1,8 +1,0 @@
-<?php
-					foreach($records as $row){ 
-						// echo "<a href='".$row['itemName']."'>".$row['itemName']."<br>"."</a>"; // Write an anchor with the url as href, and text as value/content
-					?>	 
-					<a href="#"> <?php echo $row->itemName; ?> </a> <br>
-					<?php
-					}
-				?>

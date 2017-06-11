@@ -3,27 +3,30 @@
 <head>
 	<meta charset="utf-8">
 	<title>Paradise Food Land</title>
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_myart.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_myCart.css">
 </head>
 
 <body>
 
 <?php include 'public/public_nav.php'; ?>
+<div class="navs">
+			<ul class="navbar-nav nav nav1 navbar-right" style="margin-left:531px;">
+    <li style="margin-top: 24px; margin-right: 190px;"> My Cart </li>
+				<li> <?php echo anchor("Customer/updateProfile/{}", 'My Profile', ['class'=>"btn btn-add"]); ?> </li>
+				<li> <?php echo anchor("Customer/viewItem/{}", 'Logout', ['class'=>"btn btn-add"]); ?> </li>
+			</ul>
+</div>
 
-<br>
-<br>
-<br>
-
-<h1> Your Cart </h1>
-		<table class="table table-striped table-hover">
+<div class="container1">
+		<table class="table table-hover">
 			<thead>
 				<tr id= "main_heading">
 					<td>Serial</td>
-					<td>Item Name</td>
+					<td>Name</td>
 					<td>Quantity</td>
-					<td>Price</td>
 					<td>Amount</td>
 					<td>Total</td>
+					<td>Action</td>
 					<td>Action</td>
 				</tr>
 			</thead>
@@ -34,23 +37,44 @@
 	$num_rows=count($cartItem);
 	if ($num_rows!=''){
 		foreach($cartItem as $row){
-?>
+?>	
+
+
+<form action="<?php echo base_url();?>Cart/updateCartItem" method="post">
+
 
 				<tr>
-					<td> <?php echo $row->itemID; ?> </td>
-					<td> <?php echo $row->itemID; ?> </td>
-					<td> <input type="number" min="1" max="10" size="5" value="1"> </td>
-					<td> <?php echo $row->itemID; ?> </td>
-					<td>  <?php echo $row->itemID; ?> </td>
-					<td> <?php echo $row->itemID; ?> </td>
+<input type="hidden" name="cartID" value="<?php echo $row->cartID; ?>">
+
+					<td> <?php echo $row->cartID; ?> </td>
+					<td> <?php echo $row->itemName; ?> </td>
+					<td> <input type="text" name="itemQuantity" placeholder="Enter Quantity" value="<?php echo $row->quantity; ?>"> </td>
+					<td> <?php echo $row->itemPrice; ?> </td>
+					<td> <?php echo $row->totalAmount; ?> </td>
 					<td> 
-						<?php echo anchor("Customer/deleteCartItem/{$row->cartID}", 'Delete', ['class'=>"btn btn-danger"]); ?> 
+						<?php echo anchor("Cart/deleteCartItem/{$row->cartID}", 'Delete', ['class'=>"btn btn-danger"]); ?> 
+					</td>
+					<td> 
+						<button type="submit" name="add" class="btn btn-danger"> UPDATE </button>
 					</td>
 				</tr>
+				</form> 
 	<?php
 		}
 	?>
 			</tbody>
+		</table>
+	<?php
+	} else{
+		echo "No Item in cart";
+	}
+	?>
+		<table>
+			<tr>
+				<td>
+					<?php echo anchor("Customer/viewItem/", 'Add New', ['class'=>"btn btn-primary"]); ?> 
+				</td>
+			</tr>
 		</table>
 		<table>
 			<tr>
@@ -59,19 +83,19 @@
 				</td>
 			</tr>
 		</table>
-		<table align="right">
+		<br>
+		<table>
 		<tr>
 			<td> 
-				<?php echo anchor("Customer/deleteCartItem/{$row->cartID}", 'Generate Invoice', ['class'=>"btn btn-danger"]); ?> 
+				<?php echo anchor("Customer/deleteCartItem/{}", 'Generate Invoice', ['class'=>"btn btn-danger"]); ?> 
 			</td>
 			<td> 
-				<?php echo anchor("Customer/deleteCartItem/{$row->cartID}", 'Order Out', ['class'=>"btn btn-danger"]); ?> 
+				<?php echo anchor("Cart/generateInvoice/{}", 'Order Out', ['class'=>"btn btn-danger"]); ?> 
 			</td>
 		</tr>
 		</table>
 		
-	<?php
-	} else{
-		echo "No Item in cart";
-	}
-	?>
+	
+</div>
+</body>
+</html>

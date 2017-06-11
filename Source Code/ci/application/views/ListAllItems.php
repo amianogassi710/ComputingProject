@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 			<div>
-				<?php echo anchor("Customer/showCart/", 'MyCart', ['class'=>"btn btn-primary"]); ?>
+				<?php echo anchor("Cart/viewCartDetails/", 'MyCart', ['class'=>"btn btn-primary"]); ?>
 			</div>
 		</div>
 		<table class="table table-striped table-hover">
@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		var sendRequest = function(){
 			var searchKey = $('#searchKey').val();
 			var limitRows = $('#limitRows').val();
-			window.location.href = '<?=base_url('Customer/listItem')?>?query='+searchKey+'&limitRows='+limitRows+'&orderField='+curOrderField+'&orderDirection='+curOrderDirection;
+			window.location.href = '<?=base_url('Customer/viewItem')?>?query='+searchKey+'&limitRows='+limitRows+'&orderField='+curOrderField+'&orderDirection='+curOrderDirection;
 		}
 
 

@@ -76,17 +76,28 @@ class CustomerModel extends CI_Model{
 		return "Data saved";
 	}
 	
-	public function showItemsInCart($sessionData){
+	public function updateUserProfile($sessionData){
 		$this->db->where("customerID",$sessionData);
-		$result=$this->db->get("cart");
+		$result=$this->db->get("customer");
 		return $result->result();
 	}
 	
-	public function deleteItemInCart($cartID){
-		$this->db->where('cartID',$cartID);
-		$result=$this->db->delete("cart");
-		return "data deleted";
+	public function updateCustomerProfile($customerID,$firstname,$lastname,$email,$username,
+				$mobilenumber,$district,$street){
+		$array=array(
+			"customerFirstName"=>$firstname,
+			"customerLastName"=>$lastname,
+			"email"=>$email,
+			"username"=>$username,
+			"mobileNumber"=>$mobilenumber,
+			"district"=>$district,
+			"street"=>$street
+		);
+		$this->db->where("customerID",$customerID);
+		$this->db->update('customer',$array);
+		return "data updated";
 	}
+
 }
 
 

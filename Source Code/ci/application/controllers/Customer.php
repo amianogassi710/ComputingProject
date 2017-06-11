@@ -57,7 +57,7 @@ class Customer extends CI_Controller {
 					$this->load->view('AdminDashboard');
 				} else{
 					$this->session->set_userdata('customerID',$loginID);
-					return redirect('Customer/listItem');
+					return redirect('Customer/viewItem');
 				}
 			} else {
 				echo ("Password not match");
@@ -68,7 +68,7 @@ class Customer extends CI_Controller {
 	}
 	
 	// Show Menu For Customer
-	public function listItem(){
+	public function viewItem(){
 		$sessionData=$this->session->userdata('customerID');
 		if($sessionData!=''){
 			echo $sessionData;
@@ -126,37 +126,63 @@ class Customer extends CI_Controller {
 			
 			$data['CartMessage']=$this->CustomerModel->addItemToCart
 							($sessionData,$itemID);
-			redirect(site_url('Customer/listItem'));					
+			redirect(site_url('Customer/viewItem'));					
 		} else{
 			echo "sorry";
 		}
 	}
 	
-	public function showCart(){
+	public function updateProfile(){
 		$sessionData=$this->session->userdata('customerID');
 		if($sessionData!=''){
 			$this->load->model('CustomerModel');
 			
-			$cartItem=$this->CustomerModel->showItemsInCart
+			$profile=$this->CustomerModel->updateUserProfile
 							($sessionData);
-			//redirect(site_url('Customer/listItem'));	
-		$this->load->view('Check',['cartItem'=>$cartItem]);
-			
+				
+		$this->load->view('ProfileUpdate',['profile'=>$profile]);
 		} else{
 			echo "sorry";
 		}
-		//$this->load->view('MyCart');
 	}
 	
-	public function deleteCartItem($cartID){
-		$this->load->model('CustomerModel');
-		$check=$this->CustomerModel->deleteItemInCart($cartID);
-		if ($check){
-			redirect(site_url('Customer/showCart'));
-		} else{
-			echo "Not done";
+	public function updateCustomerDetails(){
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_rules('firstName', 'Firstname', 'required|trim|max_length[20]');
+		$this->form_validation->set_rules('lastName', 'Lastname', 'required|max_length[15]');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|max_length[40]');
+		$this->form_validation->set_rules('username', 'Username', 'required|min_length[7]|max_length[20]');
+		$this->form_validation->set_rules('mobileNumber', 'Mobile Number', 'required|numeric|exact_length[10]');
+		$this->form_validation->set_rules('district', 'District', 'required');
+		$this->form_validation->set_rules('street', 'Street', 'required|max_length[50]');
+		
+		if($this->form_validation->run()){
+			$customerID=$this->input->post('customerID');
+			$firstname=$this->input->post('firstName');
+			$lastname=$this->input->post('lastName');
+			$email=$this->input->post('email');
+			$username=$this->input->post('username');
+			$mobilenumber=$this->input->post('mobileNumber');
+			$district=$this->input->post('district');
+			$street=$this->input->post('street');		
+			
+			$this->load->model('CustomerModel');
+			
+			$data['CustomerMessage']=$this->CustomerModel->updateCustomerProfile
+							($customerID,$firstname,$lastname,$email,$username,
+							$mobilenumber,$district,$street);
+							
+			redirect(site_url('Customer/viewItem'));					
+		} else {
+			echo validation_errors();
 		}
 	}
+	
+	public function orderOut(){
+		echo "here is your order";
+	}
+	
 	
 }
 
