@@ -54,7 +54,8 @@ class Customer extends CI_Controller {
 			$loginID=$this->CustomerModel->checkLogin($username,$password);
 			if($loginID){
 				if($loginID==1){
-					$this->load->view('AdminDashboard');
+					$this->session->set_userdata('customerID',$loginID);
+					return redirect('Home/adminDashboard');
 				} else{
 					$this->session->set_userdata('customerID',$loginID);
 					return redirect('Customer/viewItem');
@@ -70,52 +71,51 @@ class Customer extends CI_Controller {
 	// Show Menu For Customer
 	public function viewItem(){
 		$sessionData=$this->session->userdata('customerID');
-		if($sessionData!=''){
-			echo $sessionData;
+		if($sessionData!=''){	
+		
+			$this->load->library('pagination');
+			$this->load->model('CustomerModel');
+
+
+			$config['base_url'] = base_url('Customer/index');
+			
+			$config['per_page'] = ($this->input->get('limitRows')) ? $this->input->get('limitRows') : 10;
+			$config['enable_query_strings'] = TRUE;
+			$config['page_query_string'] = TRUE;
+			$config['reuse_query_string'] = TRUE;
+
+
+			 // integrate bootstrap pagination
+			$config['full_tag_open'] = '<ul class="pagination">';
+			$config['full_tag_close'] = '</ul>';
+		   
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['prev_link'] = 'Prev';
+			$config['prev_tag_open'] = '<li class="prev">';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'?per_page=0">';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+
+			$data['page'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+			$data['searchFor'] = ($this->input->get('query')) ? $this->input->get('query') : NULL;
+			$data['orderField'] = ($this->input->get('orderField')) ? $this->input->get('orderField') : '';
+			$data['orderDirection'] = ($this->input->get('orderDirection')) ? $this->input->get('orderDirection') : '';
+			$data['citylist'] = $this->CustomerModel->getItem($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
+			$config['total_rows'] = $this->CustomerModel->countItem($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
+			$this->pagination->initialize($config);
+			$data['pagination'] = $this->pagination->create_links();
+			$this->load->view('ListAllItems', $data);
 		} else{
-			echo "sorry";
+			redirect('Customer/Login');
 		}
-		
-		$this->load->library('pagination');
-		$this->load->model('CustomerModel');
-
-
-		$config['base_url'] = base_url('Customer/index');
-		
-		$config['per_page'] = ($this->input->get('limitRows')) ? $this->input->get('limitRows') : 10;
-		$config['enable_query_strings'] = TRUE;
-		$config['page_query_string'] = TRUE;
-		$config['reuse_query_string'] = TRUE;
-
-
-		 // integrate bootstrap pagination
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-       
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = 'Prev';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = 'Next';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'?per_page=0">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
-
-		$data['page'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
-		$data['searchFor'] = ($this->input->get('query')) ? $this->input->get('query') : NULL;
-		$data['orderField'] = ($this->input->get('orderField')) ? $this->input->get('orderField') : '';
-		$data['orderDirection'] = ($this->input->get('orderDirection')) ? $this->input->get('orderDirection') : '';
-		$data['citylist'] = $this->CustomerModel->get_city($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
-		$config['total_rows'] = $this->CustomerModel->count_city($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
-		$this->pagination->initialize($config);
-		$data['pagination'] = $this->pagination->create_links();
-		$this->load->view('ListAllItems', $data);
 	}
 	
 	// Add Items To Cart
@@ -128,7 +128,7 @@ class Customer extends CI_Controller {
 							($sessionData,$itemID);
 			redirect(site_url('Customer/viewItem'));					
 		} else{
-			echo "sorry";
+			$this->load->view('Login');
 		}
 	}
 	
@@ -142,7 +142,7 @@ class Customer extends CI_Controller {
 				
 		$this->load->view('ProfileUpdate',['profile'=>$profile]);
 		} else{
-			echo "sorry";
+			$this->load->view('Login');
 		}
 	}
 	
@@ -173,7 +173,7 @@ class Customer extends CI_Controller {
 							($customerID,$firstname,$lastname,$email,$username,
 							$mobilenumber,$district,$street);
 							
-			redirect(site_url('Customer/viewItem'));					
+			redirect(site_url('Customer/updateProfile'));					
 		} else {
 			echo validation_errors();
 		}
@@ -181,6 +181,11 @@ class Customer extends CI_Controller {
 	
 	public function orderOut(){
 		echo "here is your order";
+	}
+	
+	public function logout(){
+		$this->session->sess_destroy();
+        redirect('Customer/Login');
 	}
 	
 	

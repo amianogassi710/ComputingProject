@@ -4,12 +4,14 @@ html{
 }
 
 .container1{
-	width:955px;
+	width:976px;
 	text-align:center;
 	border-radius:4px;
-	margin-top:55px;
-	margin-left:200px;
+	margin-top:100px;
+	margin-left:195px;
 	position:absolute;
+	background-color:rgba(52,73,94,0.5);
+
 }
 
 th{

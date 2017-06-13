@@ -34,6 +34,7 @@
 		</div>
 	</div>
 </section>
+
 <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
 <script src="<?php echo base_url();?>assets/js/custom.js"></script>
 <script src="<?php echo base_url();?>assets/js/wow.min.js"></script> <!--Animate.min.css-->

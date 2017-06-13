@@ -12,6 +12,9 @@
 
 <div class="container1">
 	<h1> Category List </h1>
+		<a href="<?php echo base_url();?>Home/adminDashboard"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -455px; margin-top:-50px;" />
+	</a>
 	<table class="table">
 		<thead>
 			<th> Name </th>

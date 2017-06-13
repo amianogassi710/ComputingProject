@@ -13,12 +13,11 @@ class Cart extends CI_Controller {
 			$cartItem=$this->CartModel->viewItemsInCart
 							($sessionData);
 			// redirect(site_url('Customer/listItem'));	
-		$this->load->view('Check',['cartItem'=>$cartItem]);
+		$this->load->view('MyCart',['cartItem'=>$cartItem]);
 			
 		} else{
-			echo "sorry";
+			redirect('Customer/Login');
 		}
-		// $this->load->view('MyCart');
 	}
 	
 	// Delete Items From Cart

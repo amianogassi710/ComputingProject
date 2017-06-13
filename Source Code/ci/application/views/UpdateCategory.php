@@ -11,6 +11,9 @@
 
 <div class="container1">
 	<h1> Update Category </h1>
+		<a href="<?php echo base_url();?>Manager/listCategoryUpdate"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+	</a>
 
 	<?php
 		foreach($category as $row){

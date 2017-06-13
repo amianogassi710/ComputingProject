@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paradise Food Land</title>
+	<title>Update Profile</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_updateProfile.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 </head>
@@ -11,6 +11,9 @@
 <?php include 'public/public_nav.php'; ?>
 <div class="container1">
 		<h1> Update Profile </h1>
+			<a href="<?php echo base_url();?>Customer/viewItem"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px;" />
+			</a>
 
 <?php
 	foreach($profile as $row){
@@ -23,11 +26,11 @@
 		</tr> 
 		<tr> 
 			<td> <label for="firstName"> First Name </label> </td> 
-			<td> <input type="text" name="firstName" value="<?php echo $row->customerFirstName; ?> "> </td> 
+			<td> <input type="text" name="firstName" value="<?php echo $row->customerFirstName;?> "> </td> 
 		</tr> 
 		<tr> 
 			<td> <label for="firstName"> Last Name </label> </td> 
-			<td> <input type="text" name="lastName" value="<?php echo $row->customerLastName; ?>"> </td>
+			<td> <input type="text" name="lastName" value="<?php echo $row->customerLastName;?>"> </td>
 		</tr>
 		<tr>
 			<td> <label for="firstName"> Email </label> </td> 
@@ -50,21 +53,21 @@
 		?>
 		<?php if ($checkAddress=="Bhaktapur"){ ?>
 		<select name="district">
-			<option value="<?php echo $row->district; ?>"> <?php echo $row->district; ?> </option>
+			<option value="Bhaktapur"> Bhaktapur </option>
 			<option value="Kathmandu"> Kathmandu </option>
 			<option value="Lalitpur"> Lalitpur </option>
 		</select>
 		<?php } ?>
 		<?php if ($checkAddress=="Lalitpur"){ ?>
-		<select name="district>
-			<option value="<?php echo $row->district; ?>"> <?php echo $row->district; ?> </option>
+		<select name="district">
+			<option value="Lalitpur"> Lalitpur </option>
 			<option value="Bhaktapur"> Bhaktapur </option>
-			<option value="Lalitpur"> Kathmandu </option>
+			<option value="Kathmandu"> Kathmandu </option>
 		<select>
 		<?php } ?>
 		<?php if ($checkAddress=="Kathmandu"){ ?>
-		<select name="district>
-			<option value="<?php echo $row->district; ?>"> <?php echo $row->district; ?> </option>
+		<select name="district">
+			<option value="Kathmandu"> Kathmandu </option>
 			<option value="Bhaktapur"> Bhaktapur </option>
 			<option value="Lalitpur"> Lalitpur </option>
 		<select>
@@ -78,7 +81,8 @@
 		</tr>
 		
 		<tr>
-			<td> <button type="submit" name="add" class="btn-add"> UPDATE </button> </td>
+			<td> </td>
+			<td> <button type="submit" name="add" class="btn btn-info"> UPDATE </button> </td>
 		</tr>
 	</form>	
 	

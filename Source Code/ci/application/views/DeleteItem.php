@@ -15,7 +15,9 @@
 <?php if ($load){ ?>
 <div class="container1">
 	<h1> Item  List </h1>
-	
+			<a href="<?php echo base_url();?>Home/adminDashboard"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+	</a>
 	<?php echo form_open_multipart('Manager/searchItemsWithCategory');?>
 	<div class="styled-select">
 			<select name="categoryID">
@@ -37,9 +39,9 @@
 <?php } else { ?> 	
 <div class="container2">
 <h1> Select Item for Delete</h1>
-	<div class="back">
-		<a href="<?php echo site_url('Manager/listCategoryForDelete') ?>">Back</a>
-	</div>
+		<a href="<?php echo base_url();?>Manager/listCategoryForDelete"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+	</a>
 	<table class="table">
 		<thead>
 			<th> Name </th>

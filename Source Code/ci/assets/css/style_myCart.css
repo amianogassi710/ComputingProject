@@ -6,16 +6,30 @@ html{
 
 .navs{
 	margin-top:50px;
-	margin-right:200px;
-	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	//background: url(../images/gallery-img1.jpg) no-repeat center fixed;
 	background-size:cover;
-
+	position:absolute;
+	width:90%;
+	margin-left:65px;
+	background-color:white;
 }
 .container1{
 	width:1200px;
-	margin-top:60px;
+	margin-top:117px;
 	margin-left:110px;
 	position:absolute;
-		background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+}
 
+
+table th{
+	text-align: center;
+}
+
+table{
+	font-size: 1.4em;
+}
+
+.logout{
+	margin-right: 100px;
 }

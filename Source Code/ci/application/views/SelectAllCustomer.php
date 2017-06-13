@@ -9,9 +9,14 @@
 </head>
 
 <body>
+<?php include 'public/public_nav_M.php'; ?>
+
 <div class="container1">
 	<h1> Customer List </h1>
-	<table class="table">
+	<a href="<?php echo base_url();?>Home/adminDashboard"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -915px; margin-top:-40px;" />
+	</a>
+		<table class="table table-hover">
 		<thead>
 			<tr>
 				<td> Name </td>

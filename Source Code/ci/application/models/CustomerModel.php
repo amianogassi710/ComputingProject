@@ -30,7 +30,7 @@ class CustomerModel extends CI_Model{
 	}
 	
 	// Show Menu For Customer	
-	function get_city($limit, $start, $st = "", $orderField, $orderDirection)
+	function getItem($limit, $start, $st = "", $orderField, $orderDirection)
     {
         
         $query = $this->db->select('*')
@@ -38,7 +38,7 @@ class CustomerModel extends CI_Model{
 						->join('category','category.categoryID=item.categoryID')
 						->or_like('item.itemName', $st)
 						->or_like('category.categoryName', $st)
-						// ->or_like('item.itemDescription', $st)
+
 						->limit($limit, $start)
 						->order_by($orderField, $orderDirection)
 						->get();
@@ -46,7 +46,7 @@ class CustomerModel extends CI_Model{
         
     }
 
-    function count_city($limit, $start, $st = "", $orderField, $orderDirection)
+    function countItem($limit, $start, $st = "", $orderField, $orderDirection)
     {
         
 		$query = $this->db->select('*')
@@ -54,7 +54,6 @@ class CustomerModel extends CI_Model{
 						->join('category','category.categoryID=item.categoryID')
 						->or_like('item.itemName', $st)
 						->or_like('category.categoryName', $st)
-						// ->or_like('item.itemDescription', $st)
 						->order_by($orderField, $orderDirection)
 						->get();
         return $query->num_rows();

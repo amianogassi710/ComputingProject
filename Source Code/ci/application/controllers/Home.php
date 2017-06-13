@@ -27,7 +27,12 @@ class Home extends CI_Controller {
 	}
 	
 	public function addCategory(){
-		$this->load->view('AddNewCategory');
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){	
+			$this->load->view('AddNewCategory');
+		} else{
+			redirect('Customer/Login');
+		}
 	}		
 	
 	public function updateCategory(){
@@ -36,10 +41,6 @@ class Home extends CI_Controller {
 	
 	public function addItem(){
 		$this->load->view('AddNewItems');
-	}	
-	
-	public function admin(){
-		$this->load->view('AdminDashboard');
 	}	
 	
 	public function updateItems(){
@@ -56,7 +57,13 @@ class Home extends CI_Controller {
 		$this->load->view('orderedOut');
 	}
 	
-	public function fade(){
-		$this->load->view('fade');
+	public function adminDashboard(){
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){	
+			$this->load->view('AdminDashboard');
+		} else{
+			redirect('Customer/Login');
+		}
 	}
+	
 }

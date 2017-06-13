@@ -12,7 +12,9 @@
 
 <div class="container2">
 		<h1> Update Item </h1>
-
+			<a href="<?php echo base_url();?>Home/adminDashboard"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+	</a>
 	
 	<?php
 		foreach($item as $row){
@@ -26,7 +28,7 @@
 			<label for="name"> Item Price </label>
 			<input type="text" placeholder="Category Name" name="itemPrice" value="<?php echo $row->itemPrice; ?>" ><br>
 			<label for="name"> Item Description </label>
-			<input type="text" placeholder="Category Name" name="itemDescription" value="<?php echo $row->itemDescription; ?>" ><br>
+			<textarea name="itemDescription" placeholder="Description of Item" rows="5" cols="46" class="mytextarea" value="asd"> <?php echo $row->itemDescription; ?> </textarea> <br>
 			<button type="reset" class="btn-reset"> RESET </button>
 			<button type="submit" name="add" class="btn-add"> UPDATE </button>
 		</div>

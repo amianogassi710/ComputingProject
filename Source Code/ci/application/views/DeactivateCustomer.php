@@ -15,7 +15,9 @@
 <?php if ($load){ ?>
 <div class="container1">
 	<h1> Search Customer For Delete </h1>
-	
+	<a href="<?php echo base_url();?>Home/adminDashboard"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+	</a>
 	<?php echo form_open_multipart('Manager/searchCustomer');?>
 	<div class="styled-select">
 		<input type="text" name="customerID" placeholder="Customer ID"> <br> <br>		

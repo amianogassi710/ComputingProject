@@ -14,10 +14,11 @@
 	
 <?php	
 if ($load)	{ ?>
-<h1> Update Items </h1> <br> <br>
-	<br>
 	<div id="select">
-	<h2> Select Items </h2>
+	<h2> Select Items For Update</h2>
+			<a href="<?php echo base_url();?>Home/adminDashboard"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+	</a>
 	
 	<?php 
 		echo form_open_multipart('Manager/selectItemDescription');
@@ -43,9 +44,12 @@ if ($load)	{ ?>
 	</div>
 <?php } else { ?>	
 	<div class="back">
-		<a href="<?php echo site_url('Manager/listItemUpdate') ?>">Back</a>
 	</div>
 	<h1> Item Description </h1>
+			<a href="<?php echo base_url();?>Manager/listItemUpdate"> 
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+	</a>
+	
 	<table 	border='1'>
 		<tr>
 			<td> Item ID </td>

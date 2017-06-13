@@ -1,6 +1,7 @@
 html{
 	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
 	background-size:cover;
+	font-size:1.6em;
 }
 
 .container1{
@@ -12,9 +13,6 @@ html{
 	margin-left:400px;
 	position:fixed;
 }
-
-
-
 
 button.accordion {
     background-color: #eee;
@@ -37,4 +35,8 @@ div.panel {
     padding: 0 18px;
     display: none;
     background-color: white;
+}
+
+a{
+	font-size:1.6em;
 }

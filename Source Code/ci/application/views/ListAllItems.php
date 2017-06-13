@@ -4,17 +4,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+<title> Food Items
+</title>	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_ListAlltems.css">
+
 </head>
+
 <body>
 <?php include 'public/public_nav.php'; ?>
 
 		
-	<div class="container" style="margin-top:75px;">
+	<div class=" container1 container" style="margin-top:75px;margin-left:96px;/* width: 100px; */position: absolute;">
 		<div class="row">
-			<div class="col-sm-3">
+		<div class="navs">
+			<div class="col-sm-3" style="margin-right: 25px;margin-left: 80px;">
 				<div class="form-group">
 					<input type="text" name="searchFor" placeholder="Search..." class="form-control" id="searchKey" onchange="sendRequest();">
 				</div>
@@ -33,14 +39,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div>
 				<?php echo anchor("Cart/viewCartDetails/", 'MyCart', ['class'=>"btn btn-primary"]); ?>
 			</div>
+			<div>
+				<?php echo anchor("Customer/updateProfile/{}", 'My Profile', ['class'=>"update btn btn-add"]); ?>
+			</div>
+			<div>
+				<?php echo anchor("Customer/logout/{}", 'Logout', ['class'=>"logout btn btn-add"]); ?>
+			</div>
 		</div>
-		<table class="table table-striped table-hover">
+		<table class="table table-hover">
 		<thead>
 			<tr>
 				<th><span>S/N</span></th>
 				<th data-action="sort" data-title="itemName" data-direction="ASC"><span>itemName</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
 				<th data-action="sort" data-title="categoryName" data-direction="ASC"><span>categoryName</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
 				<th data-action="sort" data-title="itemPrice" data-direction="ASC"><span>itemPrice</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
+				<th><span>Action</span></th>
+				<th><span>Description</span></th>
 			</tr>
 		</thead>
 
@@ -54,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td><?=$city->categoryName;?></td>
 						<td><?=$city->itemPrice;?></td>
 						<td><?php echo anchor("Customer/addToCart/{$city->itemID}", 'Add', ['class'=>"btn btn-primary"]); ?></td>
-						<td><a href=""> <?=$city->itemID;?> Add </a> </td>
+						<td><a href=""> <?=$city->itemID;?> Info </a> </td>
 					</tr>
 
 			<?php	}
@@ -65,6 +79,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<th data-action="sort" data-title="itemName" data-direction="ASC"><span>itemName</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
 				<th data-action="sort" data-title="categoryName" data-direction="ASC"><span>categoryName</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
 				<th data-action="sort" data-title="itemPrice" data-direction="ASC"><span>itemPrice</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
+				<th><span>Action</span></th>
+				<th><span>Description</span></th>
 			</tr>
 		
 			</tfoot>

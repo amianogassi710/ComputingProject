@@ -1,12 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Manager extends CI_Controller {
 
 	// Add New Category
 	public function addCategory() {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('categoryName', 'Category Name', 'required|trim|max_length[20]');
+		$this->form_validation->set_rules('categoryName', 'categoryName', 'required|trim|max_length[20]');
 		
 		if($this->form_validation->run()){
 			$categoryName=$this->input->post('categoryName');
@@ -16,7 +15,7 @@ class Manager extends CI_Controller {
 							($categoryName);
 			echo "Done";
 		} else {
-			echo validation_errors();
+            $this->load->view('AddNewCategory');
 		}
 	}
 	
@@ -72,9 +71,14 @@ class Manager extends CI_Controller {
 	
 	// Add New Items
 	public function listCategoryAddItem() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllCategory();
-		$this->load->view('AddNewItems',$data);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->listAllCategory();
+			$this->load->view('AddNewItems',$data);
+		} else{
+			$this->load->view('Login');
+		}
 	}
 	
 	public function addItems() {
@@ -104,7 +108,9 @@ class Manager extends CI_Controller {
 								($itemName,$itemImage,$itemPrice,$categoryID,$itemDescription);
 			echo "Done";
 		}else {
-			echo validation_errors();
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->listAllCategory();
+            $this->load->view('AddNewItems',$data);
 		}
 	}
 	
@@ -242,8 +248,7 @@ class Manager extends CI_Controller {
 		$itemStatus= $this->input->post('itemStatus');
 		$this->load->model('ManagerModel');
 		$check['records']=$this->ManagerModel->changeItemStatus($itemID,$itemStatus);
-		echo "done";
-	}
+redirect('Manager/checkStatus');	}
 	
 	// List All Items with Category
 	public function listItemWithCategory() {
