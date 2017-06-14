@@ -37,7 +37,7 @@ function Print() {
 <br>
 
 <div id="div2" style="display:none;">
-<table class="table table-hover">
+<table class="bill table table-hover">
   <thead>
     <tr>
 		<th>#</th>

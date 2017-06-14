@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-<title> Food Items
+<title> 
+<?php $sessionData1=$this->session->userdata('username');  ?> 
+				Welcome	<?php echo $sessionData1;?>
 </title>	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
@@ -14,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
-<?php include 'public/public_nav.php'; ?>
+<?php include 'public/public_nav_C.php'; ?>
 
 		
 	<div class=" container1 container" style="margin-top:75px;margin-left:96px;/* width: 100px; */position: absolute;">
@@ -27,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 
 			<div class="col-sm-3">
+					
 				<div class="form-group">
 					<select class="form-control" id="limitRows" onchange="sendRequest();">
 						<option value="10">10</option>

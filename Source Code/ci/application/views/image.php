@@ -1,20 +1,7 @@
-<html>
-<head>
-<title>Upload Form</title>
-</head>
-<body>
-
-<?php echo $error;?>
-
-<?php echo form_open_multipart('Manager/do_upload');?>
-
-<input type="file" name="itemImage" size="20" />
-
-<br /><br />
-
-<input type="submit" value="upload" />
-
-</form>
-
-</body>
-</html>
+<?php
+	foreach ($record as $row){
+?>
+	<img src="<?php echo base_url();?>assets/images/<?php echo $row->itemImage; ?>" height="500" width="500">;
+<?php
+}
+?>

@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paradise Food Land</title>
+	<title>Welcome Admin ( <?php $sessionData1=$this->session->userdata('username');  ?> 
+					<?php echo $sessionData1;?> )</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_AdminDashboard.css">
 </head>
 <body>
-<?php include 'public/public_nav.php'; ?>
+<?php include 'public/public_nav_M.php'; ?>
 
 <div class="container1">
-	<h2>Welcome Admin</h2>
+	<h2> <?php $sessionData1=$this->session->userdata('username');  ?> 
+				Welcome	<?php echo $sessionData1;?></h2>
 
 	<button class="accordion">Add New</button>
 	<div class="panel">
@@ -44,6 +46,11 @@
 	<button class="accordion">Change Item Status</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/checkStatus');?>"> Change Item Status </a> <br>
+	</div>
+	
+	<button class="accordion">View Order</button>
+	<div class="panel">
+		<a href="<?php echo site_url('Manager/viewOrder');?>"> View Order </a> <br>
 	</div>
 	
 </div>

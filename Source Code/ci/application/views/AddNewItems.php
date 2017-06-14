@@ -35,7 +35,7 @@
 				?>
 			</select> <br>
 			</div>			
-			<textarea name="itemDescription" placeholder="Description of Item" rows="5" cols="45" class="mytextarea"> </textarea> <br>
+			<textarea name="itemDescription" placeholder="Description of Item" rows="5" cols="40" class="mytextarea"> </textarea> <br>
 			<button type="reset" class="btn btn-warning"> RESET </button>
 			<input type="submit" value="ADD" name="add" class="btn btn-success" />
 

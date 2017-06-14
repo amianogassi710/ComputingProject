@@ -55,9 +55,11 @@ class Customer extends CI_Controller {
 			if($loginID){
 				if($loginID==1){
 					$this->session->set_userdata('customerID',$loginID);
+					$this->session->set_userdata('username',$username);
 					return redirect('Home/adminDashboard');
 				} else{
 					$this->session->set_userdata('customerID',$loginID);
+					$this->session->set_userdata('username',$username);
 					return redirect('Customer/viewItem');
 				}
 			} else {
@@ -77,7 +79,7 @@ class Customer extends CI_Controller {
 			$this->load->model('CustomerModel');
 
 
-			$config['base_url'] = base_url('Customer/index');
+			$config['base_url'] = base_url('Customer/viewItem');
 			
 			$config['per_page'] = ($this->input->get('limitRows')) ? $this->input->get('limitRows') : 10;
 			$config['enable_query_strings'] = TRUE;

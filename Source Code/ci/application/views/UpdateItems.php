@@ -8,12 +8,12 @@
 </head>
 
 <body>
-<?php include 'public/public_nav.php'; ?>
+<?php include 'public/public_nav_M.php'; ?>
 
 <div class="container2">
-		<h1> Update Item </h1>
-			<a href="<?php echo base_url();?>Home/adminDashboard"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+	<h1> Update Item </h1>
+	<a href="<?php echo base_url();?>Manager/listItemUpdate"> 
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:0px;" />
 	</a>
 	
 	<?php
@@ -27,10 +27,12 @@
 			<input type="text" placeholder="Category Name" name="itemName" value="<?php echo $row->itemName; ?>" ><br>
 			<label for="name"> Item Price </label>
 			<input type="text" placeholder="Category Name" name="itemPrice" value="<?php echo $row->itemPrice; ?>" ><br>
+			<div style="margin-bottom:30px;">
 			<label for="name"> Item Description </label>
 			<textarea name="itemDescription" placeholder="Description of Item" rows="5" cols="46" class="mytextarea" value="asd"> <?php echo $row->itemDescription; ?> </textarea> <br>
-			<button type="reset" class="btn-reset"> RESET </button>
-			<button type="submit" name="add" class="btn-add"> UPDATE </button>
+			</div>
+			<button type="reset" class="btn btn-warning"> RESET </button>
+			<button type="submit" name="add" class="btn btn-success"> UPDATE </button>
 		</div>
 	</form>
 </div>

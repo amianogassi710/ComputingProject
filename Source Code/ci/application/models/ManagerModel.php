@@ -156,7 +156,20 @@ class ManagerModel extends CI_Model{
 	}
 	
 	
+	public function viewCustomerOrder(){
+		$this->db->select('*');
+		$this->db->from('orders');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
+	public function confirmItemDelivery($deliveryStatus){
+		$array=array(
+			"deliveryStatus"=>$deliveryStatus,
+		);
+		$this->db->insert(order,$array); //Active Records
+		return "Data saved";
+	}
 	
 
 	public function insertdata(){
@@ -166,6 +179,43 @@ class ManagerModel extends CI_Model{
 	public function retriveImage($path){
 		$this->db->where('id',$path);
 		return $this->db->get("images");
+	}
+	
+	
+	function getItem($limit, $start, $st = "", $orderField, $orderDirection)
+    {
+        
+        $query = $this->db->select('*')
+						->from('item')
+						->join('category','category.categoryID=item.categoryID')
+						->or_like('item.itemName', $st)
+						->or_like('category.categoryName', $st)
+						// ->or_like('item.itemDescription', $st)
+						->limit($limit, $start)
+						->order_by($orderField, $orderDirection)
+						->get();
+        return $query->result();
+        
+    }
+
+    function countItem($limit, $start, $st = "", $orderField, $orderDirection)
+    {
+        
+$query = $this->db->select('*')
+						->from('item')
+						->join('category','category.categoryID=item.categoryID')
+						->or_like('item.itemName', $st)
+						->or_like('category.categoryName', $st)
+						// ->or_like('item.itemDescription', $st)
+						->order_by($orderField, $orderDirection)
+						->get();
+        return $query->num_rows();
+    }
+	
+	
+	public function extImage(){
+		$q=$this->db->get('item');
+		return $q->result();
 	}
 
 }

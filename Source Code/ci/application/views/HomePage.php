@@ -153,7 +153,7 @@
 				<h2 class="heading">Contact Info.</h2>
 				<div class="ph">
 					<p><i class="fa fa-phone"></i> Phone</p>
-					<h4>090-080-0760</h4>
+					<h4>9843518777</h4>
 				</div>
 				<div class="address">
 					<p><i class="fa fa-map-marker"></i> Our Location</p>

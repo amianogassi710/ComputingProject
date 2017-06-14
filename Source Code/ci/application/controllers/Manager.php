@@ -89,7 +89,7 @@ class Manager extends CI_Controller {
 		$this->form_validation->set_rules('itemDescription', 'Item Description', 'required|trim|max_length[100]');
 		
 		if($this->form_validation->run()){
-			$config['upload_path']="assets/images";
+			$config['upload_path']="assets/images/itemImage";
 			$config['allowed_types']='gif|jpg|png';
 				
 			$this->load->library('upload',$config);
@@ -250,32 +250,92 @@ class Manager extends CI_Controller {
 		$check['records']=$this->ManagerModel->changeItemStatus($itemID,$itemStatus);
 redirect('Manager/checkStatus');	}
 	
-	// List All Items with Category
-	public function listItemWithCategory() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllItem();
-		$datas['record']=$this->ManagerModel->listAllCategory();
-		$all=$data + $datas;
-		$this->load->view('SelectAllItems',$all);
-	}
+	
+	
+	public function viewOrder(){
+		$sessionData=$this->session->userdata('customerID');
 
-	public function hello(){
-		$fullname=$this->input->post('fullname');
-		$this->load->model('ManagerModel');
-			$data['ManagerMessage']=$this->ManagerModel->loadItemWithCategory
-							($fullname);
-		echo "<pre>";
-		print_r ($data);
-		
-		foreach( $data as $e ) {
-			echo '<tr><th>', $e[0], '</th><td>', join('</td><td>', $e[1]), "</td></tr>\n";
-		}		
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			
+			$data['records']=$this->ManagerModel->viewCustomerOrder();
+			$this->load->view('viewOrder',$data);
+			
+		} else{
+			echo "sorry";
+		}
+	}	
+	public function confirmDelivery(){
+		$sessionData=$this->session->userdata('customerID');
+
+		if($sessionData!=''){
+						$deliveryStatus=$this->input->post('deliver');
+
+			$this->load->model('ManagerModel');
+			
+			$data['records']=$this->ManagerModel->confirmItemDelivery($deliveryStatus);
+redirect(Manager/viewOrder);			
+		} else{
+			echo "sorry";
+		}
 	}
-	
-	
+		
 	
 	public function check(){
 		$this->load->view('ss');
+	}
+	
+	
+	// List All Items with Category	
+	public function listItemWithCategory()
+	{
+		$this->load->library('pagination');
+		$this->load->model('ManagerModel');
+
+
+		$config['base_url'] = base_url('Manager/listItemWithCategory');
+		
+		$config['per_page'] = ($this->input->get('limitRows')) ? $this->input->get('limitRows') : 10;
+		$config['enable_query_strings'] = TRUE;
+		$config['page_query_string'] = TRUE;
+		$config['reuse_query_string'] = TRUE;
+
+
+		 // integrate bootstrap pagination
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+       
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = 'Prev';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = 'Next';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'?per_page=0">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+		$data['page'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+		$data['searchFor'] = ($this->input->get('query')) ? $this->input->get('query') : NULL;
+		$data['orderField'] = ($this->input->get('orderField')) ? $this->input->get('orderField') : '';
+		$data['orderDirection'] = ($this->input->get('orderDirection')) ? $this->input->get('orderDirection') : '';
+		$data['itemList'] = $this->ManagerModel->getItem($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
+		$config['total_rows'] = $this->ManagerModel->countItem($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
+		$this->pagination->initialize($config);
+		$data['pagination'] = $this->pagination->create_links();
+		$this->load->view('SelectAllItems', $data);
+	}
+	
+	public function extract(){
+					$this->load->model('ManagerModel');
+			$data['record']=$this->ManagerModel->extImage();
+							$this->load->view('image',$data);
+
 	}
  
 }

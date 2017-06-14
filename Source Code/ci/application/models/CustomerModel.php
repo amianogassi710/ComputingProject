@@ -38,7 +38,6 @@ class CustomerModel extends CI_Model{
 						->join('category','category.categoryID=item.categoryID')
 						->or_like('item.itemName', $st)
 						->or_like('category.categoryName', $st)
-
 						->limit($limit, $start)
 						->order_by($orderField, $orderDirection)
 						->get();

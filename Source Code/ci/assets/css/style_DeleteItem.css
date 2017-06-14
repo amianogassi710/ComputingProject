@@ -4,20 +4,25 @@ html{
 }
 
 .container1{
+	width:380px;
+	text-align:center;
+	border-radius:4px;
+	margin-top:155px;
+	margin-left:493px;
+	position:absolute;
+	background-color:rgba(52,73,94,0.5);
+	padding-bottom:20px;
+}
+
+.container2{
 	width:500px;
 	text-align:center;
 	border-radius:4px;
 	margin-top:155px;
 	margin-left:400px;
 	position:absolute;
-}
-.container2{
-	width:500px;
-	text-align:center;
-	border-radius:4px;
-	margin-top:60px;
-	margin-left:400px;
-	position:absolute;
+	background-color:rgba(52,73,94,0.5);
+	padding:0 20px;
 }
 
 
@@ -31,21 +36,17 @@ html{
   margin-bottom: 15px;
 }
 
-.btn-search{
-	padding:11px 19px;
-	color:#fff;
-	background-color:#2ECC71;
-	border:none;
-	border-radius:4px;
-	border-bottom:4px solid #27AE60;
-}
-
-th{
+table th{
 	text-align: center;
+	color: lightgrey;
 }
 
 table{
 	font-size: 1.4em;
+}
+
+table td{
+	color:white;
 }
 
 

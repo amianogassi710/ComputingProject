@@ -15,12 +15,12 @@
 		<div class="form-input">
 			<input type="text" placeholder="Username" name="username"> <br>
 			<input type="password" placeholder="Password" name="password"> <br>
-			<button type="reset" name="cancel" class="btn-cancel"> RESET </button>
-			<button type="submit" name="login" class="btn-login"> LOGIN </button>
+			<button type="reset" name="cancel" class="btn btn-warning"> RESET </button>
+			<button type="submit" name="login" class="btn btn-success"> LOGIN </button>
 		</div>
 	</form>
-	<br> <a href="#" style="color:red;"> Forget Password ? </a>
-	<br> <br> <a href="<?php echo site_url('Home/signup') ?>" style="color:red;"> Not Register Yet? Register Now!! </a>
+	<br> <a href="#" style="color:white;"> Forget Password ? </a>
+	<br> <br> <a href="<?php echo site_url('Home/signup') ?>" style="color:white;"> Not Register Yet? Register Now!! </a>
 </div>
 
 </body>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Paradise Food Land</title>
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_DeleteItem.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_deactivateCustomer.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 </head>
 
@@ -14,9 +14,9 @@
 
 <?php if ($load){ ?>
 <div class="container1">
-	<h1> Search Customer For Delete </h1>
+	<h1> Select Customer </h1>
 	<a href="<?php echo base_url();?>Home/adminDashboard"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -285px; margin-top:-20px;" />
 	</a>
 	<?php echo form_open_multipart('Manager/searchCustomer');?>
 	<div class="styled-select">
@@ -24,7 +24,7 @@
 		<input type="text" name="customerFirstName" placeholder="Customer First Name"> <br> <br>		
 		<input type="text" name="customerLastName" placeholder="Customer Last Name">		
 			<br> <br>
-		<input type="submit" value="SEARCH" name="add" class="btn-search" />
+		<input type="submit" value="SEARCH" name="add" class="btn btn-primary" />
 
 		</div>
 	</form>
@@ -32,10 +32,10 @@
 <?php } else { ?> 	
 <div class="container2">
 <h1> Select Item for Delete</h1>
-	<div class="back">
-		<a href="<?php echo site_url('Home/DeactivateCustomer') ?>">Back</a>
-	</div>
-	<table class="table">
+	<a href="<?php echo base_url();?>Home/deactivateCustomer"> 
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -435px; margin-top:-30px;" />
+	</a>
+		<table class="table table-bordered table-inverse">
 		<thead>
 			<th> First Name </th>
 			<th> Last Name </th>

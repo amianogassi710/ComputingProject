@@ -16,7 +16,7 @@
 	<a href="<?php echo base_url();?>Home/adminDashboard"> 
 				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -915px; margin-top:-40px;" />
 	</a>
-		<table class="table table-hover">
+		<table class="table table-bordered table-inverse">
 		<thead>
 			<tr>
 				<td> Name </td>

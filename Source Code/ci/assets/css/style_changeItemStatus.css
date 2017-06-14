@@ -4,17 +4,16 @@ html{
 }
 
 .container1{
-	width:800px;
+	width:720px;
 	text-align:center;
 	background-color:rgba(52,73,94,0.6);
 	border-radius:4px;
 	margin:0 auto;
 	margin-top:80px;
-	margin-left:250px;
+	margin-left:323px;
 	margin-bottom:50px;
 	position:absolute;
 }
-
 
 input[type="text"]{
 	height:45px;
@@ -34,15 +33,5 @@ input[type="text"]{
   height: 45px;
   padding-left: 15px;
   margin-bottom: 15px;
-}
-
-.btn-change{
-	color: #fff;
-    background-color: #2ECC71;
-    border: none;
-    width: 94px;
-    height: 46px;
-    border-radius: 4px;
-    border-bottom: 4px solid #27AE60;
-    margin-left: 50px;
+  margin-right:40px;
 }

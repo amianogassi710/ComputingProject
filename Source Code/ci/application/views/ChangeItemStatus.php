@@ -7,12 +7,12 @@
 </head>
 
 <body>
-<?php include 'public/public_nav.php'; ?>
+<?php include 'public/public_nav_M.php'; ?>
 
 <div class="container1">
 	<h1> Change Item Status </h1>
 	<a href="<?php echo base_url();?>Home/adminDashboard"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px; margin-top:-50px;" />
+				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -605px; margin-top:-50px;" />
 	</a>
 	<?php 
 		foreach ($records as $row) {
@@ -45,7 +45,7 @@
 				} 
 			?>	
 			</select>
-			<input type="submit" class="btn-change" value="CHANGE">
+			<input type="submit" class="btn btn-primary" value="CHANGE">
 		</div>
 	<?php
 		echo form_close();
