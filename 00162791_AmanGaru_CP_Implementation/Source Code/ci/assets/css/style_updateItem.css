@@ -1,0 +1,80 @@
+html{
+	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	background-size:cover;
+}
+
+.container1 #select{
+	width:400px;
+	text-align:center;
+	border-radius:4px;
+	margin-top:85px;
+	margin-left:483px;
+	padding-bottom:20px;
+	position:absolute;
+	background-color:rgba(52,73,94,0.5);
+}
+
+.container1 #edit{
+	width:900px;
+	text-align:center;
+	border-radius:4px;
+	margin-top:185px;
+	margin-left:233px;
+	padding-bottom:20px;
+	position:absolute;
+	background-color:rgba(52,73,94,0.5);
+	padding: 0 20px 20px 20px;
+}
+
+.container2{
+	width:540px;
+	text-align:center;
+	border-radius:4px;
+	margin-top:150px;
+	margin-left:413px;
+	padding-bottom:20px;
+	position:absolute;
+	background-color:rgba(52,73,94,0.6);
+	padding-right:20px;
+	padding-left:20px;
+}
+
+input[type="text"]{
+	height:45px;
+	width:300px;
+	font-size:18px;
+	margin-bottom:20px;
+	background-color:#fff;
+	padding-left:20px;
+}
+
+.styled-select select {
+  width: 300px;
+  font-size:16pt;
+  color:black;
+  border: 0;
+  height: 45px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+table th{
+	text-align: center;
+	color:lightgrey;
+}
+
+table{
+	font-size: 1.4em;
+}
+
+table td{
+	color:white;
+}
+
+label{
+	width:170px;
+	color:white;
+	font-size: 1.4em;
+	margin-right:10px;
+}
+

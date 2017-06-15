@@ -1,0 +1,66 @@
+html{
+	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	background-size:cover;
+}
+
+.container1{
+	width:360px;
+	text-align:center;
+	border-radius:4px;
+	margin-top:155px;
+	margin-left:503px;
+	position:absolute;
+	background-color:rgba(52,73,94,0.5);
+	padding-bottom:20px;
+}
+
+.container2{
+	width:500px;
+	text-align:center;
+	border-radius:4px;
+	margin-top:155px;
+	margin-left:400px;
+	position:absolute;
+	background-color:rgba(52,73,94,0.5);
+	padding:0 20px;
+}
+
+input[type="text"]{
+	height:45px;
+	width:300px;
+	font-size:18px;
+	margin-bottom:20px;
+	background-color:#fff;
+	padding-left:20px;
+}
+
+.styled-select select {
+  width: 300px;
+  font-size:14pt;
+  color:grey;
+  border: 0;
+  height: 45px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+table th{
+	text-align: center;
+	color: lightgrey;
+}
+
+table{
+	font-size: 1.4em;
+}
+
+table td{
+	color:white;
+}
+
+
+.back{
+    margin-left: 8px;
+    margin-top: -40px;
+    position: absolute;
+    font-size: 23px;
+}
