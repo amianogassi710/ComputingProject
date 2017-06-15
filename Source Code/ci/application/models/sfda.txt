@@ -1,0 +1,16 @@
+
+BEGIN
+set @orderID=(select  orderID from orders ORDER BY statusUpdatedTime DESC LIMIT 1);
+set @customerID=(select customerID from orders where orderID=@orderID);
+set @itemID=(select itemID from orders where orderID=@orderID);
+set @itemName=(select itemName from item where itemID=@itemID);
+set @quantity=(select quantity from orders where orderID=@orderID);
+set @itemPrice=(select itemPrice from item where itemID=@itemID);
+set @totalAmount=(select totalAmount from orders where orderID=@orderID);
+set @timeAdded=(select statusUpdatedTime from orders where orderID=@orderID);
+set @deliveryStatus=(select deliveryStatus from orders where orderID=@orderID);
+set @paymentStatus=(select paymentStatus from orders where orderID=@orderID);
+
+
+    
+END

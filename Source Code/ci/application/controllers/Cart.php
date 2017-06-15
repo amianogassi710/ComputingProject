@@ -21,20 +21,17 @@ class Cart extends CI_Controller {
 	}
 	
 	// Delete Items From Cart
-	public function deleteCartItem($cartID){
+	public function deleteCartItem($orderID){
 		$this->load->model('CartModel');
-		$check=$this->CartModel->deleteItemInCart($cartID);
-		if ($check){
+		$check=$this->CartModel->deleteItemInCart($orderID);
 			redirect(site_url('Cart/viewCartDetails'));
-		} else{
-			echo "Not done";
-		}
+		
 	}
 	
 	// Update Item In Cart
 	public function updateCartItem(){
 		$itemQuantity=$this->input->post('itemQuantity');
-		$cartID=$this->input->post('cartID');
+		$cartID=$this->input->post('orderID');
 		$this->load->model('CartModel');
 		$check=$this->CartModel->updateItemInCart($cartID,$itemQuantity);
 		if ($check){
@@ -48,8 +45,11 @@ class Cart extends CI_Controller {
 	public function generateInvoice(){
 		$sessionData=$this->session->userdata('customerID');
 		if($sessionData!=''){
+			
+			
 			$this->load->model('CartModel');
 			
+			$data[]=$this->CartModel->confirmUserOrder($sessionData);
 			$data['records']=$this->CartModel->generateBill($sessionData);
 			$datas['record']=$this->CartModel->generateTotal($sessionData);
 			$all=$data + $datas;

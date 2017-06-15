@@ -159,17 +159,15 @@ class ManagerModel extends CI_Model{
 	public function viewCustomerOrder(){
 		$this->db->select('*');
 		$this->db->from('orders');
+		$this->db->where('confirmUserOrder','Yes');
+		
+		
+		$this->db->order_by("customerID");
 		$query = $this->db->get();
 		return $query->result();
 	}
 	
-	public function confirmItemDelivery($deliveryStatus){
-		$array=array(
-			"deliveryStatus"=>$deliveryStatus,
-		);
-		$this->db->insert(order,$array); //Active Records
-		return "Data saved";
-	}
+	
 	
 
 	public function insertdata(){
@@ -218,5 +216,20 @@ $query = $this->db->select('*')
 		return $q->result();
 	}
 
+	public function updateItemStatus($deliverStatus,$paymentStatus,$orderID){
+		$arr=array("orderID"=>$orderID,
+		"deliveryStatus"=>$deliverStatus,
+		"paymentStatus"=>$paymentStatus);
+		$this->db->set('statusUpdatedTime','NOW()',FALSE);
+		$this->db->where("orderID",$orderID);
+		$this->db->update('orders',$arr);
+		return "data updated";
+	}
+	
+	public function confirmOrder($orderID){
+		$this->db->where("orderID",$orderID);
+		$result=$this->db->delete("orders");
+		return "data deleted";
+	}
 }
 ?>

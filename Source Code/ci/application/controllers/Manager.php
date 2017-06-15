@@ -265,20 +265,7 @@ redirect('Manager/checkStatus');	}
 			echo "sorry";
 		}
 	}	
-	public function confirmDelivery(){
-		$sessionData=$this->session->userdata('customerID');
 
-		if($sessionData!=''){
-						$deliveryStatus=$this->input->post('deliver');
-
-			$this->load->model('ManagerModel');
-			
-			$data['records']=$this->ManagerModel->confirmItemDelivery($deliveryStatus);
-redirect(Manager/viewOrder);			
-		} else{
-			echo "sorry";
-		}
-	}
 		
 	
 	public function check(){
@@ -332,10 +319,25 @@ redirect(Manager/viewOrder);
 	}
 	
 	public function extract(){
-					$this->load->model('ManagerModel');
-			$data['record']=$this->ManagerModel->extImage();
-							$this->load->view('image',$data);
+		$this->load->model('ManagerModel');
+		$data['record']=$this->ManagerModel->extImage();
+		$this->load->view('image',$data);
 
+	}
+	
+	public function updateStatus(){
+		$deliverStatus= $this->input->post('deliverStatus');
+		$paymentStatus= $this->input->post('paymentStatus');
+		$orderID= $this->input->post('orderID');
+		$this->load->model('ManagerModel');
+		$data['record']=$this->ManagerModel->updateItemStatus($deliverStatus,$paymentStatus,$orderID);
+		redirect('Manager/viewOrder');
+	}
+	
+	public function confirmOrderDelivery($orderID){
+		$this->load->model('ManagerModel');
+		$check=$this->ManagerModel->confirmOrder($orderID);
+		redirect('Manager/viewOrder');
 	}
  
 }

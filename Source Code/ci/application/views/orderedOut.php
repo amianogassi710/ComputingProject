@@ -19,16 +19,7 @@ function Print() {
 </script>
 </head>
 <body>
-<?php include 'public/public_nav.php'; ?>
-<div class="navs">
-			<ul class="navbar-nav nav nav1 navbar-right" style="margin-left:531px;">
-    <li style="margin-right: 290px;"> <h3> Invoice <h3> </li>
-				<li> <?php echo anchor("Customer/updateProfile/{}", 'My Profile', ['class'=>"btn btn-add"]); ?> </li>
-				<li> <?php echo anchor("Customer/logout/{}", 'Logout', ['class'=>"logout btn btn-add"]); ?> </li>
-			</ul>
-</div>
-
-
+<?php include 'public/public_nav_C.php'; ?>
 
 <div class="container1">
 <h1> Successfully ordered!!! </h1>

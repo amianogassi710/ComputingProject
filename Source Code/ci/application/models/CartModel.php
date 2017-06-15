@@ -5,7 +5,7 @@ class CartModel extends CI_Model{
 	// Show Items Of Cart
 	public function viewItemsInCart($sessionData){
 		$this->db->where("customerID",$sessionData);
-		$this->db->order_by("cartID");
+		$this->db->order_by("orderID");
 		$result=$this->db->get("orders");
 		return $result->result();
 	}
@@ -19,7 +19,8 @@ class CartModel extends CI_Model{
 
 	// Update Item in Cart
 	public function updateItemInCart($cartID, $itemQuantity){
-	$arr=array("quantity"=>$itemQuantity
+		$arr=array("cartID"=>$cartID,
+			"quantity"=>$itemQuantity
 				);
 	    $this->db->set('dateAdded', 'NOW()', FALSE);
 
@@ -43,6 +44,15 @@ class CartModel extends CI_Model{
 		$this->db->where("customerID", $sessionData);
 		$query = $this->db->get();
 		return $query->result();
+	}
+	
+	public function confirmUserOrder($sessionData){
+		$array=array(
+			"confirmUserOrder"=>'Yes',
+		);
+		$this->db->where("customerID",$sessionData);
+		$this->db->update("orders",$array); //Active Records
+		return "Data saved";
 	}
 }
 

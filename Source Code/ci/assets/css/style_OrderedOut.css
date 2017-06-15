@@ -39,16 +39,3 @@ table{
     width: 90px;
 }
 
-.navs{
-	margin-top:50px;
-	//background: url(../images/gallery-img1.jpg) no-repeat center fixed;
-	background-size:cover;
-	position:absolute;
-	width:90%;
-	margin-left:65px;
-	background-color:white;
-}
-
-.logout{
-	margin-right: 100px;
-}

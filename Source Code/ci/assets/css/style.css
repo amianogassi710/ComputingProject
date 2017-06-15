@@ -118,7 +118,7 @@ hr {
 
 /* home section */
 #home {
-  background: url('../images/home-bg.jpg') 50% 0 repeat-y fixed;
+  background: url('../images/wallpaper11.jpg') 50% 0 repeat-y fixed;
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center;
@@ -324,3 +324,5 @@ footer .fa {
 #copyright a:hover {
   color: #FF0;
 }
+
+

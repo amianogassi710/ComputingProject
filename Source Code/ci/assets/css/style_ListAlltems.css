@@ -34,15 +34,3 @@ table td{
 table th{
 	text-align:center;
 }
-
-.navs{
-	//background: url(../images/gallery-img1.jpg) no-repeat center fixed;
-background-size: cover;
-    margin-left: -31px;
-    background-color: white;
-    height: 58px;
-    padding-top: 6px;
-    margin-top: -17px;
-    width: 105%;
-    margin-bottom: 10px;
-}

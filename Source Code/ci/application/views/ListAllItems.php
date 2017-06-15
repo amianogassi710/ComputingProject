@@ -21,7 +21,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 	<div class=" container1 container" style="margin-top:75px;margin-left:96px;/* width: 100px; */position: absolute;">
 		<div class="row">
-		<div class="navs">
 			<div class="col-sm-3" style="margin-right: 25px;margin-left: 80px;">
 				<div class="form-group">
 					<input type="text" name="searchFor" placeholder="Search..." class="form-control" id="searchKey" onchange="sendRequest();">
@@ -42,12 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div>
 				<?php echo anchor("Cart/viewCartDetails/", 'MyCart', ['class'=>"btn btn-primary"]); ?>
 			</div>
-			<div>
-				<?php echo anchor("Customer/updateProfile/{}", 'My Profile', ['class'=>"update btn btn-add"]); ?>
-			</div>
-			<div>
-				<?php echo anchor("Customer/logout/{}", 'Logout', ['class'=>"logout btn btn-add"]); ?>
-			</div>
+		
 		</div>
 		<table class="table table-hover">
 		<thead>

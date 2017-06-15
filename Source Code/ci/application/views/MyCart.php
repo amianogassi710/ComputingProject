@@ -8,14 +8,9 @@
 
 <body>
 
-<?php include 'public/public_nav.php'; ?>
-<div class="navs">
-			<ul class="navbar-nav nav nav1 navbar-right" style="margin-left:531px;">
-    <li style="margin-right: 290px;"> <h3> My Cart <h3> </li>
-				<li> <?php echo anchor("Customer/updateProfile/{}", 'My Profile', ['class'=>"btn btn-add"]); ?> </li>
-				<li> <?php echo anchor("Customer/logout/{}", 'Logout', ['class'=>"logout btn btn-add"]); ?> </li>
-			</ul>
-</div>
+<?php include 'public/public_nav_C.php'; ?>
+			
+			<div style="margin-top:70px; margin-left:620px;position:absolute;"> <h1> My Cart </h1> </div>
 
 	<div class="container1">
 		<table class="table table-hover">
@@ -38,14 +33,14 @@
 			?>	
 			<form action="<?php echo base_url();?>Cart/updateCartItem" method="post">
 				<tr>
-					<input type="hidden" name="cartID" value="<?php echo $row->cartID; ?>">
-					<td> <?php echo $row->cartID; ?> </td>
+					<input type="hidden" name="orderID" value="<?php echo $row->orderID; ?>">
+					<td> <?php echo $row->orderID; ?> </td>
 					<td> <?php echo $row->itemName; ?> </td>
 					<td> <input type="number" min="1" max="10" name="itemQuantity" placeholder="Enter Quantity" value="<?php echo $row->quantity; ?>"> </td>
 					<td> <?php echo $row->itemPrice; ?> </td>
 					<td> <?php echo $row->totalAmount; ?> </td>
 					<td> 
-						<?php echo anchor("Cart/deleteCartItem/{$row->cartID}", 'Delete', ['class'=>"btn btn-danger"]); ?> 
+						<?php echo anchor("Cart/deleteCartItem/{$row->orderID}", 'Delete', ['class'=>"btn btn-danger"]); ?> 
 					</td>
 					<td> 
 						<button type="submit" name="add" class="btn btn-danger"> UPDATE </button>

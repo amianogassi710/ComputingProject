@@ -12,8 +12,8 @@
 <!-- home section -->
 <section id="home">
 	<div class="container">
-				<h1>PARADISE FOOD LAND</h1>
-				<h2>Online &amp; Food Ordering</h2>
+				<h1 style="color:black;">PARADISE FOOD LAND</h1>
+				<h2 style="color:black;">Online Food Ordering</h2>
 				<a href="#gallery" class="smoothScroll btn btn-default">LEARN MORE</a>
 	</div>		
 </section>
@@ -27,34 +27,34 @@
 				<hr>
 			</div>
 			<div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s"> <!--Animate.min.css wow.min.js-->
-				<a href="images/gallery-img1.jpg"><img src="<?php echo base_url();?>assets/images/gallery-img1.jpg" alt="gallery img"></a>
+				<a href="images/Chowmein.jpg"><img src="<?php echo base_url();?>assets/images/Chowmein.jpg" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Prawn</h3>
-					<span>Seafood / Shrimp / Lemon</span>
+					<h3>Chowmein</h3>
+					<span>Buff / Veg </span>
 				</div>
-				<a href="images/gallery-img2.jpg"><img src="<?php echo base_url();?>assets/images/gallery-img2.jpg" alt="gallery img"></a>
+				<a href="images/Momo.jpg"><img src="<?php echo base_url();?>assets/images/Momo.jpg" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Vegetables</h3>
-					<span>Tomato / Rosemary / Lemon</span>
+					<h3>Momo</h3>
+					<span>Steam / Fried / C</span>
 				</div>
 			</div>
 			<div class="col-md-4  wow fadeInUp" data-wow-delay="0.6s">
-				<a href="images/gallery-img3.jpg"><img src="<?php echo base_url();?>assets/images/gallery-img3.jpg" alt="gallery img"></a>
+				<a href="images/Pizza.jpg"><img src="<?php echo base_url();?>assets/images/Pizza.jpg" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Bakery</h3>
-					<span>Bread / Rosemary / Orange</span>
+					<h3>Pizza</h3>
+					<span>Chicken / Mixed / Mushroom</span>
 				</div>
 			</div>
 			<div class="col-md-4  wow fadeInUp" data-wow-delay="0.9s">
-				<a href="images/gallery-img4.jpg"><img src="<?php echo base_url();?>assets/images/gallery-img4.jpg" alt="gallery img"></a>
+				<a href="images/Soup.jpg"><img src="<?php echo base_url();?>assets/images/Soup.jpg" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Salad</h3>
-					<span>Chicken / Rosemary / Green</span>
+					<h3>Soup</h3>
+					<span>Chicken / Mushroom / Vegetable</span>
 				</div>
-				<a href="images/gallery-img5.jpg"><img src="<?php echo base_url();?>assets/images/gallery-img5.jpg" alt="gallery img"></a>
+				<a href="images/Beverage.jpg"><img src="<?php echo base_url();?>assets/images/Beverage.jpg" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Pizza</h3>
-					<span>Pasta / Rosemary / Green</span>
+					<h3>Beverage</h3>
+					<span>Milkshake / Sprite / Energy Drink</span>
 				</div>
 			</div>
 		</div>
@@ -70,35 +70,35 @@
 				<hr>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Vegetable ................ <span>$20.50</span></h4>
+				<h4>Momo .................................................................. <span>$20.50</span></h4>
 				<h5>Chicken / Rosemary / Lemon</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Meat ........................... <span>$30.50</span></h4>
+				<h4>Chowmein .............................................................. <span>$30.50</span></h4>
 				<h5>Meat / Rosemary / Lemon</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Pork ........................ <span>$40.75</span></h4>
+				<h4>Beverage ............................................................ <span>$40.75</span></h4>
 				<h5>Pork / Tooplate / Lemon</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Orange-Rosemary Salad .......................... <span>$55.00</span></h4>
+				<h4>Alcoholic Beverage ................................................ <span>$55.00</span></h4>
 				<h5>Salad / Rosemary / Orange</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Squid ...................... <span>$65.00</span></h4>
+				<h4>Breakfast ............................................................. <span>$65.00</span></h4>
 				<h5>Squid / Rosemary / Lemon</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Orange-Rosemary Shrimp ........................ <span>$70.50</span></h4>
+				<h4>Snacks ................................................................... <span>$70.50</span></h4>
 				<h5>Shrimp / Rosemary / Orange</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Prawn ................... <span>$110.75</span></h4>
+				<h4>Pizza .................................................................... <span>$110.75</span></h4>
 				<h5>Chicken / Rosemary / Lemon</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Seafood ..................... <span>$220.50</span></h4>
+				<h4>Newari Khaja .......................................................... <span>$220.50</span></h4>
 				<h5>Seafood / Rosemary / Lemon</h5>
 			</div>
 		</div>
@@ -157,14 +157,13 @@
 				</div>
 				<div class="address">
 					<p><i class="fa fa-map-marker"></i> Our Location</p>
-					<h4>120 Duis aute irure, California, USA</h4>
+					<h4>Suryavinayak, Bhaktapur, USA</h4>
 				</div>
 			</div>
 			<div class="col-md-4 wow fadeInUp" data-wow-delay="0.6s">
 				<h2 class="heading">Open Hours</h2>
-					<p>Sunday <span>10:30 AM - 10:00 PM</span></p>
-					<p>Mon-Fri <span>9:00 AM - 8:00 PM</span></p>
-					<p>Saturday <span>11:30 AM - 10:00 PM</span></p>
+					<p>Sun-Sat <span>7:00 AM - 9:00 PM</span></p>
+
 			</div>
 			<div class="col-md-4 wow fadeInUp" data-wow-delay="0.6s">
 				<h2 class="heading">Follow Us</h2>

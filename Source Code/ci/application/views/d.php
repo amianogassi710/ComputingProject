@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8">
+<meta charset="utf-8">
 	<title>Paradise Food Land</title>
-
+	
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/animate.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css">
+
 <style>
 
 .dropdown-content {
     display: none;
     position: absolute;
-    
-    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -35,16 +36,28 @@
     background-color: #3e8e41;
 }
 </style>
-	</head>
+</head>
 <body>
 
-<section class="preloader">
-	<div class="sk-spinner sk-spinner-pulse"></div>
-</section>
+<h2>Hoverable Dropdown</h2>
+<p>Move the mouse over the button to open the dropdown menu.</p>
 
+<div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <!-- navigation section -->
-<section class="navbar navbar-default navbar-fixed-top" role="navigation">
+<section class="navbar navbar-default navbar-fixed-top" role="navigation"> 
 	<div class="container">
 		<div class="navbar-header">
 			<a href="#" class="navbar-brand">PARADISE</a>
@@ -58,20 +71,18 @@
 				<li><a href="<?php echo site_url('Home/index#contact') ?>" class="smoothScroll">CONTACT</a></li>
 				<li>
 					<div class="dropdown" style="line-height:57px; margin-left:13px; font-family: 'Roboto', sans-serif; font-weight: 400;">
-						<a href="<?php echo site_url('Customer/logout') ?>" class="smoothScroll">
-							<?php $sessionData1=$this->session->userdata('username'); echo $sessionData1;?>
-						</a>
-						<div class="dropdown-content">
-							<a href="<?php echo site_url('Customer/updateProfile') ?>">PROFILE</a>
-							<a href="<?php echo site_url('Customer/logout') ?>">LOGOUT</a>
-						</div>
+					<a href="" class="">PROFILE</a>
+					<div class="dropdown-content">
+						<a href="Customer/logout">LOGOUT</a>
 					</div>
-					 
+					</div>
 				</li>
 			</ul>
 		</div>
 	</div>
 </section>
+
+
 
 <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
 <script src="<?php echo base_url();?>assets/js/custom.js"></script>
