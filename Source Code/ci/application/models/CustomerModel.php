@@ -74,6 +74,7 @@ class CustomerModel extends CI_Model{
 		return "Data saved";
 	}
 	
+	// Update Customer Profile
 	public function updateUserProfile($sessionData){
 		$this->db->where("customerID",$sessionData);
 		$result=$this->db->get("customer");

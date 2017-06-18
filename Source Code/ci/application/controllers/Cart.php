@@ -13,8 +13,7 @@ class Cart extends CI_Controller {
 			$cartItem=$this->CartModel->viewItemsInCart
 							($sessionData);
 			// redirect(site_url('Customer/listItem'));	
-		$this->load->view('MyCart',['cartItem'=>$cartItem]);
-			
+			$this->load->view('MyCart',['cartItem'=>$cartItem]);
 		} else{
 			redirect('Customer/Login');
 		}
@@ -24,8 +23,7 @@ class Cart extends CI_Controller {
 	public function deleteCartItem($orderID){
 		$this->load->model('CartModel');
 		$check=$this->CartModel->deleteItemInCart($orderID);
-			redirect(site_url('Cart/viewCartDetails'));
-		
+		redirect(site_url('Cart/viewCartDetails'));
 	}
 	
 	// Update Item In Cart
@@ -41,22 +39,18 @@ class Cart extends CI_Controller {
 		}
 	}
 	
-	
+	// Generate Invoice
 	public function generateInvoice(){
 		$sessionData=$this->session->userdata('customerID');
-		if($sessionData!=''){
-			
-			
+		if($sessionData!=''){		
 			$this->load->model('CartModel');
-			
 			$data[]=$this->CartModel->confirmUserOrder($sessionData);
 			$data['records']=$this->CartModel->generateBill($sessionData);
 			$datas['record']=$this->CartModel->generateTotal($sessionData);
 			$all=$data + $datas;
 			$this->load->view('orderedOut',$all);
-			
 		} else{
-			echo "sorry";
+			redirect('Customer/Login');
 		}
 	}
 }

@@ -155,7 +155,7 @@ class ManagerModel extends CI_Model{
 		return $query->result();	
 	}
 	
-	
+	// View Customer Order
 	public function viewCustomerOrder(){
 		$this->db->select('*');
 		$this->db->from('orders');
@@ -166,20 +166,7 @@ class ManagerModel extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();
 	}
-	
-	
-	
-
-	public function insertdata(){
-		echo "Amam";
-	}
-	
-	public function retriveImage($path){
-		$this->db->where('id',$path);
-		return $this->db->get("images");
-	}
-	
-	
+		
 	function getItem($limit, $start, $st = "", $orderField, $orderDirection)
     {
         
@@ -199,7 +186,7 @@ class ManagerModel extends CI_Model{
     function countItem($limit, $start, $st = "", $orderField, $orderDirection)
     {
         
-$query = $this->db->select('*')
+		$query = $this->db->select('*')
 						->from('item')
 						->join('category','category.categoryID=item.categoryID')
 						->or_like('item.itemName', $st)
@@ -210,12 +197,7 @@ $query = $this->db->select('*')
         return $query->num_rows();
     }
 	
-	
-	public function extImage(){
-		$q=$this->db->get('item');
-		return $q->result();
-	}
-
+	// Update Item Status
 	public function updateItemStatus($deliverStatus,$paymentStatus,$orderID){
 		$arr=array("orderID"=>$orderID,
 		"deliveryStatus"=>$deliverStatus,
@@ -231,5 +213,11 @@ $query = $this->db->select('*')
 		$result=$this->db->delete("orders");
 		return "data deleted";
 	}
+	
+	public function extImage(){
+		$q=$this->db->get('item');
+		return $q->result();
+	}
+	
 }
 ?>

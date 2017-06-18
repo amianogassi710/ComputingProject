@@ -30,6 +30,7 @@ class CartModel extends CI_Model{
 		return "data updated";
 	}
 	
+	// Generate Invoice
 	public function generateBill($sessionData){
 		$this->db->select('*');
 		$this->db->from('orders');

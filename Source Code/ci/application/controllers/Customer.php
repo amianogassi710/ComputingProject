@@ -134,6 +134,7 @@ class Customer extends CI_Controller {
 		}
 	}
 	
+	// Update Customer Profile
 	public function updateProfile(){
 		$sessionData=$this->session->userdata('customerID');
 		if($sessionData!=''){
@@ -179,10 +180,6 @@ class Customer extends CI_Controller {
 		} else {
 			echo validation_errors();
 		}
-	}
-	
-	public function orderOut(){
-		echo "here is your order";
 	}
 	
 	public function logout(){

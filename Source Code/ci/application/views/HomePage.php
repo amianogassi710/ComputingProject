@@ -70,36 +70,36 @@
 				<hr>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Momo .................................................................. <span>$20.50</span></h4>
-				<h5>Chicken / Rosemary / Lemon</h5>
+				<h4>Momo .................................................................. <span>Rs 220</span></h4>
+				<h5>Chicken / Buff / Vegetable</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Chowmein .............................................................. <span>$30.50</span></h4>
-				<h5>Meat / Rosemary / Lemon</h5>
+				<h4>Chowmein .............................................................. <span>Rs 150</span></h4>
+				<h5>Buff / Veg</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Beverage ............................................................ <span>$40.75</span></h4>
-				<h5>Pork / Tooplate / Lemon</h5>
+				<h4>Beverage ............................................................ <span>Rs 240</span></h4>
+				<h5>Energy Drink / Sprite / Milkshake</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Alcoholic Beverage ................................................ <span>$55.00</span></h4>
-				<h5>Salad / Rosemary / Orange</h5>
+				<h4>Alcoholic Beverage ................................................ <span>Rs 3000</span></h4>
+				<h5>Tuborg / Carlsberg / Apple Cider</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Breakfast ............................................................. <span>$65.00</span></h4>
-				<h5>Squid / Rosemary / Lemon</h5>
+				<h4>Breakfast ............................................................. <span>Rs 270</span></h4>
+				<h5>Egg / Sausage / Toast</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Snacks ................................................................... <span>$70.50</span></h4>
-				<h5>Shrimp / Rosemary / Orange</h5>
+				<h4>Snacks ................................................................... <span>Rs 315</span></h4>
+				<h5>Chicken Chilli / Chicken Meat Ball / Fried Fish</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Pizza .................................................................... <span>$110.75</span></h4>
-				<h5>Chicken / Rosemary / Lemon</h5>
+				<h4>Pizza .................................................................... <span>Rs 440</span></h4>
+				<h5>Chicken / Mixed / Mushroom</h5>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<h4>Newari Khaja .......................................................... <span>$220.50</span></h4>
-				<h5>Seafood / Rosemary / Lemon</h5>
+				<h4>Newari Khaja .......................................................... <span>Rs 400</span></h4>
+				<h5>Khukhura ko Choela / Buff Choela / Khaja Set</h5>
 			</div>
 		</div>
 	</div>
@@ -157,12 +157,12 @@
 				</div>
 				<div class="address">
 					<p><i class="fa fa-map-marker"></i> Our Location</p>
-					<h4>Suryavinayak, Bhaktapur, USA</h4>
+					<h4>Suryavinayak, Bhaktapur, Nepal</h4>
 				</div>
 			</div>
 			<div class="col-md-4 wow fadeInUp" data-wow-delay="0.6s">
 				<h2 class="heading">Open Hours</h2>
-					<p>Sun-Sat <span>7:00 AM - 9:00 PM</span></p>
+					<p>Sun-Sat <span>6:00 AM - 9:00 PM</span></p>
 
 			</div>
 			<div class="col-md-4 wow fadeInUp" data-wow-delay="0.6s">
@@ -170,9 +170,9 @@
 				<ul class="social-icon">
 					<li><a href="#" class="fa fa-facebook wow bounceIn" data-wow-delay="0.3s"></a></li>
 					<li><a href="#" class="fa fa-twitter wow bounceIn" data-wow-delay="0.6s"></a></li>
-					<li><a href="#" class="fa fa-behance wow bounceIn" data-wow-delay="0.9s"></a></li>
-					<li><a href="#" class="fa fa-dribbble wow bounceIn" data-wow-delay="0.9s"></a></li>
-					<li><a href="#" class="fa fa-github wow bounceIn" data-wow-delay="0.9s"></a></li>
+					<li><a href="#" class="fa fa-google-plus wow bounceIn" data-wow-delay="0.9s"></a></li>
+					<li><a href="#" class="fa fa-instagram wow bounceIn" data-wow-delay="0.9s"></a></li>
+					<li><a href="#" class="fa fa-linkedin wow bounceIn" data-wow-delay="0.9s"></a></li>
 				</ul>
 			</div>
 		</div>

@@ -248,30 +248,8 @@ class Manager extends CI_Controller {
 		$itemStatus= $this->input->post('itemStatus');
 		$this->load->model('ManagerModel');
 		$check['records']=$this->ManagerModel->changeItemStatus($itemID,$itemStatus);
-redirect('Manager/checkStatus');	}
-	
-	
-	
-	public function viewOrder(){
-		$sessionData=$this->session->userdata('customerID');
-
-		if($sessionData!=''){
-			$this->load->model('ManagerModel');
-			
-			$data['records']=$this->ManagerModel->viewCustomerOrder();
-			$this->load->view('viewOrder',$data);
-			
-		} else{
-			echo "sorry";
-		}
-	}	
-
-		
-	
-	public function check(){
-		$this->load->view('ss');
+		redirect('Manager/checkStatus');	
 	}
-	
 	
 	// List All Items with Category	
 	public function listItemWithCategory()
@@ -318,13 +296,22 @@ redirect('Manager/checkStatus');	}
 		$this->load->view('SelectAllItems', $data);
 	}
 	
-	public function extract(){
-		$this->load->model('ManagerModel');
-		$data['record']=$this->ManagerModel->extImage();
-		$this->load->view('image',$data);
+	// View Customer Order
+	public function viewOrder(){
+		$sessionData=$this->session->userdata('customerID');
 
-	}
-	
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			
+			$data['records']=$this->ManagerModel->viewCustomerOrder();
+			$this->load->view('viewOrder',$data);
+			
+		} else{
+			echo "sorry";
+		}
+	}	
+
+	// Update Item Status
 	public function updateStatus(){
 		$deliverStatus= $this->input->post('deliverStatus');
 		$paymentStatus= $this->input->post('paymentStatus');
@@ -340,5 +327,13 @@ redirect('Manager/checkStatus');	}
 		redirect('Manager/viewOrder');
 	}
  
-}
+		
+	public function extract(){
+		$this->load->model('ManagerModel');
+		$data['record']=$this->ManagerModel->extImage();
+		$this->load->view('image',$data);
+	}
+	
+ 
+ }
 ?>
