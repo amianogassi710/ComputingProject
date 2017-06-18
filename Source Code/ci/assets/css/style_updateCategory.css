@@ -1,0 +1,62 @@
+html{
+	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	background-size:cover;
+}
+
+.container1{
+	width:500px;
+	height:455px;
+	text-align:center;
+	background-color:rgba(52,73,94,0.5);
+	border-radius:4px;
+	margin:0 auto;
+	margin-top:100px;
+	margin-left:400px;
+	position:fixed;
+}
+
+.container2{
+	width:400px;
+	text-align:center;
+	background-color:rgba(52,73,94,0.5);
+	border-radius:4px;
+	margin:0 auto;
+	margin-top:100px;
+	margin-left:483px;
+	position:fixed;
+	padding:0 20px 20px 20px;
+}
+
+input[type="text"]{
+	height:45px;
+	width:300px;
+	font-size:18px;
+	margin-bottom:20px;
+	background-color:#fff;
+	padding-left:20px;
+}
+
+.container3{
+	width:480px;
+	text-align:center;
+	border-radius:4px;
+	margin-top:80px;
+	margin-left:443px;
+	position:absolute;
+	background-color:rgba(52,73,94,0.5);
+	padding: 0 20px 0 0px;
+}
+
+table td{
+	color:white;
+}
+
+table th{
+	color:lightgrey;
+	text-align:center;
+}
+
+table{
+	font-size: 1.4em;
+	text-align: center;
+}
