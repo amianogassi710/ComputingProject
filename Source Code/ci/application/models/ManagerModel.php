@@ -213,11 +213,15 @@ class ManagerModel extends CI_Model{
 		$result=$this->db->delete("orders");
 		return "data deleted";
 	}
-	
-	public function extImage(){
-		$q=$this->db->get('item');
-		return $q->result();
+
+	// View Customer Order History
+	public function viewCustomerOrderHistory(){
+		$this->db->select('*');
+		$this->db->from('ordershistory');		
+		$query = $this->db->get();
+		return $query->result();
 	}
+
 	
 }
 ?>

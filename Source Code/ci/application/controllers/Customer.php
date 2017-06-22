@@ -182,6 +182,21 @@ class Customer extends CI_Controller {
 		}
 	}
 	
+	public function viewItemDetails($itemID){
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('CustomerModel');
+			
+			$data['ItemInfo']=$this->CustomerModel->viewItemDetails
+							($itemID);
+			// $data['ItemImage']=$this->CustomerModel->viewItemImage
+							// ($itemID);
+			$this->load->view('ItemDetails',$data);
+		} else{
+			$this->load->view('Login');
+		}
+	}
+	
 	public function logout(){
 		$this->session->sess_destroy();
         redirect('Customer/Login');

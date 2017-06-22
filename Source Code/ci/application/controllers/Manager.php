@@ -13,7 +13,10 @@ class Manager extends CI_Controller {
 			$this->load->model('ManagerModel');
 			$data['ManagerMessage']=$this->ManagerModel->addNewCategory
 							($categoryName);
-			echo "Done";
+			echo "<script>
+					alert('Category Successfully Added');
+					window.location.href='addCategory';
+				</script>";
 		} else {
             $this->load->view('AddNewCategory');
 		}
@@ -326,13 +329,22 @@ class Manager extends CI_Controller {
 		$check=$this->ManagerModel->confirmOrder($orderID);
 		redirect('Manager/viewOrder');
 	}
+	
+	// View Customer Order History
+	public function viewOrderHistory(){
+		$sessionData=$this->session->userdata('customerID');
+
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			
+			$data['records']=$this->ManagerModel->viewCustomerOrderHistory();
+			$this->load->view('viewOrderHistory',$data);
+			
+		} else{
+			echo "sorry";
+		}
+	}	
  
-		
-	public function extract(){
-		$this->load->model('ManagerModel');
-		$data['record']=$this->ManagerModel->extImage();
-		$this->load->view('image',$data);
-	}
 	
  
  }

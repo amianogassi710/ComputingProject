@@ -52,6 +52,10 @@
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/viewOrder');?>"> View Order </a> <br>
 	</div>
+	<button class="accordion">View Order History</button>
+	<div class="panel">
+		<a href="<?php echo site_url('Manager/viewOrderHistory');?>"> View Order History</a> <br>
+	</div>
 	
 </div>
 

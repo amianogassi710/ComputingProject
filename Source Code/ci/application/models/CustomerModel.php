@@ -96,6 +96,19 @@ class CustomerModel extends CI_Model{
 		$this->db->update('customer',$array);
 		return "data updated";
 	}
+	
+	public function viewItemDetails($itemID){
+		$query = $this->db->select('*')
+						->from('item')
+						->join('category','category.categoryID=item.categoryID')
+						->where('item.itemID',$itemID)
+						->get();
+		if($query->num_rows()){
+			return $query->result();
+		} else {
+			return FALSE;
+		}
+	}
 
 }
 

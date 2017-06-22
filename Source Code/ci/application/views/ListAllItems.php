@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td><?=$city->categoryName;?></td>
 						<td><?=$city->itemPrice;?></td>
 						<td><?php echo anchor("Customer/addToCart/{$city->itemID}", 'Add', ['class'=>"btn btn-primary"]); ?></td>
-						<td><a href=""> <?=$city->itemID;?> Info </a> </td>
+						<td><?php echo anchor("Customer/viewItemDetails/{$city->itemID}", 'Info', ['class'=>"btn btn-link"]); ?></td>
 					</tr>
 
 			<?php	}

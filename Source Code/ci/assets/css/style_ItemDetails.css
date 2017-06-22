@@ -1,0 +1,22 @@
+html{
+	background: url(../images/gallery-img2.jpg) no-repeat center fixed;
+	background-size:cover;
+}
+
+.container1{
+	padding-bottom:20px;
+	border-radius:4px;
+	margin-top:80px;
+	margin-left:503px; 
+	position:absolute;
+}
+
+table{
+	font-size:1.6em;
+	color:white;
+	margin-left:-50px;
+}
+
+table th{
+	padding-right:10px;
+}

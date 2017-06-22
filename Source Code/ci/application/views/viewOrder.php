@@ -10,7 +10,10 @@
 <?php include 'public/public_nav_M.php'; ?>
 
 <div class="container1">
-
+<h1> Order Pending </h1>
+<a href="<?php echo base_url();?>Home/AdminDashboard"> 
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -1175px; margin-top:-60px;" />
+</a>
 <table class="table">
   <thead>
     <tr>
