@@ -9,6 +9,7 @@
 <body>
 <?php include 'public/public_nav_M.php'; ?>
 
+
 <div class="container1">
 	<h1> Add New Item </h1>
 	<a href="<?php echo base_url();?>Home/adminDashboard"> 
@@ -45,3 +46,5 @@
 
 </body>
 </html>
+
+//Aman

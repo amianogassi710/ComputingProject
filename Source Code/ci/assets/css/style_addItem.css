@@ -36,7 +36,7 @@ input[type="file"]{
 .styled-select select {
   width: 300px;
   font-size:14pt;
-  color:grey;
+  color:black;
   border: 0;
   height: 45px;
   padding-left: 15px;
@@ -51,3 +51,5 @@ input[type="file"]{
 #error p{
 	color:white;
 }
+
+//Aman

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Item List</title>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_ListAlltems.css">
@@ -11,7 +11,7 @@
 <body>
 <?php include 'public/public_nav_M.php'; ?>
 		
-	<div class=" container1 container" style="margin-top:75px;margin-left:96px;/* width: 100px; */position: absolute;">
+	<div class=" container1 container" style="margin-top:75px;margin-left:96px;position: absolute;">
 	
 	<div class="row">
 		<div class="col-sm-3">
@@ -32,6 +32,7 @@
 				<th data-action="sort" data-title="itemName" data-direction="ASC"><span>itemName</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
 				<th data-action="sort" data-title="categoryName" data-direction="ASC"><span>categoryName</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
 				<th data-action="sort" data-title="itemPrice" data-direction="ASC"><span>itemPrice</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
+				<th><span>Description</span></th>
 			</tr>
 		</thead>
 
@@ -44,6 +45,7 @@
 						<td><?=$city->itemName;?></td>
 						<td><?=$city->categoryName;?></td>
 						<td><?=$city->itemPrice;?></td>
+						<td><?php echo anchor("Customer/viewItemDetails/{$city->itemID}", 'Info', ['class'=>"btn btn-link"]); ?></td>
 					</tr>
 
 			<?php	}
@@ -54,6 +56,7 @@
 				<th data-action="sort" data-title="itemName" data-direction="ASC"><span>itemName</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
 				<th data-action="sort" data-title="categoryName" data-direction="ASC"><span>categoryName</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
 				<th data-action="sort" data-title="itemPrice" data-direction="ASC"><span>itemPrice</span> <i class="glyphicon glyphicon-triangle-bottom"></i></th>
+				<th><span>Description</span></th>
 			</tr>
 		
 			</tfoot>
@@ -125,3 +128,5 @@
 	</script>
 </body>
 </html>
+
+//Aman

@@ -1,74 +1,116 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Manager extends CI_Controller {
 
 	// Add New Category
 	public function addCategory() {
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('categoryName', 'categoryName', 'required|trim|max_length[20]');
-		
-		if($this->form_validation->run()){
-			$categoryName=$this->input->post('categoryName');
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('categoryName', 'categoryName', 'required|trim|max_length[20]');
 			
-			$this->load->model('ManagerModel');
-			$data['ManagerMessage']=$this->ManagerModel->addNewCategory
-							($categoryName);
-			echo "<script>
-					alert('Category Successfully Added');
-					window.location.href='addCategory';
-				</script>";
-		} else {
-            $this->load->view('AddNewCategory');
-		}
+			if($this->form_validation->run()){
+				$categoryName=$this->input->post('categoryName');
+				
+				$this->load->model('ManagerModel');
+				$data['ManagerMessage']=$this->ManagerModel->addNewCategory($categoryName);
+				echo "<script>
+						alert('Category Successfully Added');
+						window.location.href='addCategory';
+					</script>";
+			} else {
+				$this->load->view('AddNewCategory');
+			}	
+		} else{
+			$this->load->view('Login');
+		}	
 	}
 	
 	// Select All Category
 	public function listCategory() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllCategory();
-		$this->load->view('SelectAllCategory',$data);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->listAllCategory();
+			$this->load->view('SelectAllCategory',$data);
+		} else{
+			$this->load->view('Login');
+		}
 	}
 	
 	// Update Category
 	public function listCategoryUpdate() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllCategory();
-		$this->load->view('UpdateCategoryList',$data);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->listAllCategory();
+			$this->load->view('UpdateCategoryList',$data);
+		} else{
+			$this->load->view('Login');
+		}
 	}
 	
-	public function editCategory($categoryID){
+	public function editCategory($categoryID){	
 		$this->load->model('ManagerModel');
 		$category=$this->ManagerModel->findCategory($categoryID);
 		$this->load->view('UpdateCategory',['category'=>$category]);
 	}
 	
 	public function updateCategory(){
-		$categoryID=$this->input->post('hiddenID');
-		$categoryName=$this->input->post('categoryName');
-
-		$this->load->model('ManagerModel');
-		$check=$this->ManagerModel->updateCategory($categoryID,$categoryName);
-		if ($check){
-			echo "Done";
-		} else{
-			echo "Not done";
-		}
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('categoryName', 'categoryName', 'required|trim|max_length[20]');
+			
+		if($this->form_validation->run()){
+			$categoryID=$this->input->post('hiddenID');
+			$categoryName=$this->input->post('categoryName');
+				
+			$this->load->model('ManagerModel');
+			$check=$this->ManagerModel->updateCategory($categoryID,$categoryName);
+			if ($check){
+				echo "<script>
+					alert('Category Successfully Updated');
+					window.location.href='listCategoryUpdate';
+				</script>";
+			} else{
+				echo "<script>
+					alert('Update Failed');
+					window.location.href='listCategoryUpdate';
+				</script>";
+			}
+		} else {
+			echo "<script>
+					alert('Validation Error');
+					window.location.href='listCategoryUpdate';
+				</script>";
+		}			
 	}
 	
 	// Delete Category
 	public function listCategoryDelete() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllCategory();
-		$this->load->view('DeleteCategoryList',$data);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->listAllCategory();
+			$this->load->view('DeleteCategoryList',$data);
+		} else{
+			$this->load->view('Login');
+		}	
 	}
 		
 	public function deleteCategory($categoryID){
 		$this->load->model('ManagerModel');
 		$check=$this->ManagerModel->removeCategory($categoryID);
 		if ($check){
-			echo "Done";
+			echo "<script>
+					alert('Category Successfully Deleted');
+					window.location.href='/ci/Manager/listCategoryDelete';
+				</script>";
 		} else{
-			echo "Not done";
+			echo "<script>
+					alert('Delete Unsuccessfull');
+					window.location.href='listCategoryDelete';
+				</script>";
 		}
 	}
 	
@@ -109,7 +151,10 @@ class Manager extends CI_Controller {
 			$this->load->model('ManagerModel');
 			$this->ManagerModel->addNewItems
 								($itemName,$itemImage,$itemPrice,$categoryID,$itemDescription);
-			echo "Done";
+			echo "<script>
+						alert('Item Successfully Added');
+						window.location.href='listCategoryAddItem';
+					</script>";
 		}else {
 			$this->load->model('ManagerModel');
 			$data['records']=$this->ManagerModel->listAllCategory();
@@ -117,48 +162,97 @@ class Manager extends CI_Controller {
 		}
 	}
 	
-	//List All Customers
-	public function listCustomer() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllCustomer();
-		$this->load->view('SelectAllCustomer',$data);
+	// List All Items with Category	
+	public function listItemWithCategory()
+	{
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->library('pagination');
+			$this->load->model('ManagerModel');
+
+			$config['base_url'] = base_url('Manager/listItemWithCategory');		
+			$config['per_page'] = ($this->input->get('limitRows')) ? $this->input->get('limitRows') : 10;
+			$config['enable_query_strings'] = TRUE;
+			$config['page_query_string'] = TRUE;
+			$config['reuse_query_string'] = TRUE;
+
+			 // integrate bootstrap pagination
+			$config['full_tag_open'] = '<ul class="pagination">';
+			$config['full_tag_close'] = '</ul>';
+		   
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['prev_link'] = 'Prev';
+			$config['prev_tag_open'] = '<li class="prev">';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'?per_page=0">';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+
+			$data['page'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+			$data['searchFor'] = ($this->input->get('query')) ? $this->input->get('query') : NULL;
+			$data['orderField'] = ($this->input->get('orderField')) ? $this->input->get('orderField') : '';
+			$data['orderDirection'] = ($this->input->get('orderDirection')) ? $this->input->get('orderDirection') : '';
+			$data['itemList'] = $this->ManagerModel->getItem($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
+			$config['total_rows'] = $this->ManagerModel->countItem($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
+			$this->pagination->initialize($config);
+			$data['pagination'] = $this->pagination->create_links();
+			$this->load->view('SelectAllItems', $data);
+		} else{
+			$this->load->view('Login');
+		}
 	}
 	
 	// Update Items
 	public function listItemUpdate() {
-		// $this->load->model('ManagerModel');
-		// $data['records']=$this->ManagerModel->listAllItem();
-		// $this->load->view('UpdateItems',$data);
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllItem();
-		$datas['record']=$this->ManagerModel->listAllCategory();
-		$load=TRUE;
-		$data1['load']=$load;
-		$all=$data + $datas + $data1;
-		$this->load->view('UpdateItemList',$all);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->listAllItem();
+			$load=TRUE;
+			$data1['load']=$load;
+			$all=$data + $data1;
+			$this->load->view('UpdateItemList',$all);
+		} else{
+			$this->load->view('Login');
+		}		
 	}
 	
 	public function selectItemDescription(){
-		$itemID=$this->input->post('itemID');
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$itemID=$this->input->post('itemID');
 			
-		$this->load->model('ManagerModel');
-		$data['itemDesc']=$this->ManagerModel->searchItem
-				($itemID);
-		$load=FALSE;
-		$data1['load']=$load;
-		$all=$data + $data1;
-		$this->load->view('UpdateItemList',$all);
-		
+			$this->load->model('ManagerModel');
+			$data['itemDesc']=$this->ManagerModel->searchItem
+					($itemID);
+			$load=FALSE;
+			$data1['load']=$load;
+			$all=$data + $data1;
+			$this->load->view('UpdateItemList',$all);
+		} else{
+			$this->load->view('Login');
+		}				
 	}
 	
 	public function editItem($itemID){
-		$this->load->model('ManagerModel');
-		$item=$this->ManagerModel->findItem($itemID);
-		$this->load->view('UpdateItems',['item'=>$item]);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$item=$this->ManagerModel->findItem($itemID);
+			$this->load->view('UpdateItems',['item'=>$item]);
+		} else{
+			$this->load->view('Login');
+		}			
 	}
 	
 	public function updateItem(){
-		
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('hiddenID', 'Hidden ID', 'required');
 		$this->form_validation->set_rules('itemName', 'Item Name', 'required|trim|max_length[25]');
@@ -175,44 +269,77 @@ class Manager extends CI_Controller {
 			$check=$this->ManagerModel->updateItem($itemID,$itemName,
 							$itemPrice,$itemDescription);
 			if ($check){
-			echo "Done";
+				echo "<script>
+					alert('Item Successfully Updated');
+					window.location.href='listItemUpdate';
+				</script>";
 			} else{
-				echo "Not done";
+				echo "<script>
+					alert('Item Update Unsuccessfull');
+					window.location.href='listItemUpdate';
+				</script>";
 			}
 		}else {
-			echo validation_errors();
+			echo "<script>
+					alert('Validation Error');
+					window.location.href='listItemUpdate';
+				</script>";
 		}
 	}
 	
 	// Delete Item
 	public function listCategoryForDelete() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllCategory();
-		$load=TRUE;
-		$data1['load']=$load;
-		$all=$data + $data1;
-		$this->load->view('DeleteItem',$all);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->listAllCategory();
+			$load=TRUE;
+			$data1['load']=$load;
+			$all=$data + $data1;
+			$this->load->view('DeleteItem',$all);
+		} else{
+			$this->load->view('Login');
+		}	
 	}
 	
 	public function searchItemsWithCategory(){
-		$categoryID=$this->input->post('categoryID');
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->searchItemsWithCategory
-				($categoryID);
-		$load=FALSE;
-		$data1['load']=$load;
-		$all=$data + $data1;
-		$this->load->view('DeleteItem',$all);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$categoryID=$this->input->post('categoryID');
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->searchItemsWithCategory
+					($categoryID);
+			$load=FALSE;
+			$data1['load']=$load;
+			$all=$data + $data1;
+			$this->load->view('DeleteItem',$all);
+		} else{
+			$this->load->view('Login');
+		}
 	}
 	
 	public function deleteItem($itemID){
 		$this->load->model('ManagerModel');
 		$check=$this->ManagerModel->removeItem($itemID);
 		if ($check){
-			echo "Done";
+			echo "<script>
+					alert('Item Successfully Deleted');
+					window.location.href='/ci/Manager/listCategoryForDelete';
+				</script>";
 		} else{
-			echo "Not done";
+			echo "<script>
+					alert('Item Delete Unsuccessfull');
+					window.location.href='/ci/Manager/listCategoryForDelete';
+				</script>";
 		}
+	}
+	//Aman
+	
+	//List All Customers
+	public function listCustomer() {
+		$this->load->model('ManagerModel');
+		$data['records']=$this->ManagerModel->listAllCustomer();
+		$this->load->view('SelectAllCustomer',$data);
 	}
 	
 	// Deactivate Customer
@@ -254,50 +381,7 @@ class Manager extends CI_Controller {
 		redirect('Manager/checkStatus');	
 	}
 	
-	// List All Items with Category	
-	public function listItemWithCategory()
-	{
-		$this->load->library('pagination');
-		$this->load->model('ManagerModel');
-
-
-		$config['base_url'] = base_url('Manager/listItemWithCategory');
-		
-		$config['per_page'] = ($this->input->get('limitRows')) ? $this->input->get('limitRows') : 10;
-		$config['enable_query_strings'] = TRUE;
-		$config['page_query_string'] = TRUE;
-		$config['reuse_query_string'] = TRUE;
-
-
-		 // integrate bootstrap pagination
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-       
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = 'Prev';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = 'Next';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'?per_page=0">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
-
-		$data['page'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
-		$data['searchFor'] = ($this->input->get('query')) ? $this->input->get('query') : NULL;
-		$data['orderField'] = ($this->input->get('orderField')) ? $this->input->get('orderField') : '';
-		$data['orderDirection'] = ($this->input->get('orderDirection')) ? $this->input->get('orderDirection') : '';
-		$data['itemList'] = $this->ManagerModel->getItem($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
-		$config['total_rows'] = $this->ManagerModel->countItem($config["per_page"], $data['page'], $data['searchFor'], $data['orderField'], $data['orderDirection']);
-		$this->pagination->initialize($config);
-		$data['pagination'] = $this->pagination->create_links();
-		$this->load->view('SelectAllItems', $data);
-	}
+	
 	
 	// View Customer Order
 	public function viewOrder(){
@@ -345,7 +429,18 @@ class Manager extends CI_Controller {
 		}
 	}	
  
-	
+	public function viewTransaction(){
+		$Sdate= $this->input->post('Sdate');
+		$Edate= $this->input->post('Edate');
+		$this->load->model('ManagerModel');
+			
+		$data['records']=$this->ManagerModel->viewPaymentTransaction($Sdate,$Edate);
+		$load=FALSE;
+		$data1['load']=$load;
+		$all=$data + $data1;
+		            $this->load->view('ViewTransaction',$all);
+
+	}
  
  }
 ?>

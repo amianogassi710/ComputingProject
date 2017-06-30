@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paradise Food Land</title>
+	<title>Update Category</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_updateCategory.css">
 </head>
 
@@ -18,7 +18,7 @@
 	<?php
 		foreach($category as $row){
 	?>
-	
+		
 	<form action="<?php echo base_url();?>Manager/updateCategory" method="post">
 		<div class="form-input">
 			<input type="hidden" name="hiddenID" value="<?php echo $row->categoryID; ?>" > <br>
@@ -35,3 +35,5 @@
 
 </body>
 </html>
+
+//Aman

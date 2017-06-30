@@ -25,8 +25,10 @@ class ManagerModel extends CI_Model{
 	}
 	
 	public function updateCategory($categoryID, $categoryName){
-	$arr=array("categoryID"=>$categoryID,
-		"categoryName"=>$categoryName);
+		$arr=array(
+				"categoryID"=>$categoryID,
+				"categoryName"=>$categoryName
+			);
 		$this->db->where("categoryID",$categoryID);
 		$this->db->update('category',$arr);
 		return "data updated";
@@ -58,12 +60,6 @@ class ManagerModel extends CI_Model{
 		return $q->result();
 	}
 		
-	// List All Customers
-	public function listAllCustomer(){
-		$q=$this->db->get('customer');
-		return $q->result();
-	}
-
 	// Update Items
 	public function searchItem($itemID){
 		$this->db->select('*');
@@ -106,6 +102,13 @@ class ManagerModel extends CI_Model{
 		$this->db->where("itemID",$itemID);
 		$result=$this->db->delete("item");
 		return "data deleted";
+	}
+	//Aman
+	
+	// List All Customers
+	public function listAllCustomer(){
+		$q=$this->db->get('customer');
+		return $q->result();
 	}
 
 	// Deactivate Customer
@@ -222,6 +225,20 @@ class ManagerModel extends CI_Model{
 		return $query->result();
 	}
 
+	public function viewPaymentTransaction($Sdate,$Edate){
+		$this->db->select('*');
+// $this->db->select_sum('totalAmount');
+
+		$this->db->from('orders');		
+		$this->db->where('dateAdded >=', $Sdate);
+		$this->db->where('dateAdded <=', $Edate);
+		$result= $this->db->get();
+		return $result->result();
+
 	
+		
 }
+
+}	
+
 ?>

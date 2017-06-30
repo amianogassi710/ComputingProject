@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paradise Food Land</title>
+	<title>Delete Item</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_DeleteItem.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 </head>
@@ -13,8 +13,8 @@
 <?php if ($load){ ?>
 <div class="container1">
 	<h1> Item  List </h1>
-			<a href="<?php echo base_url();?>Home/adminDashboard"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -285px; margin-top:-45px;" />
+		<a href="<?php echo base_url();?>Home/adminDashboard"> 
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -285px; margin-top:-45px;" />
 	</a>
 	<?php echo form_open_multipart('Manager/searchItemsWithCategory');?>
 	<div class="styled-select">
@@ -67,3 +67,5 @@
 
 </body>
 </html>
+
+//Aman

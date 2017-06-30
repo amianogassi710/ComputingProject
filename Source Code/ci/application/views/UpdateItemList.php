@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paradise Food Land</title>
+	<title>Update Item</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_updateItem.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 </head>
@@ -17,7 +17,7 @@ if ($load)	{ ?>
 	<div id="select">
 	<h2> Select Items For Update</h2>
 		<a href="<?php echo base_url();?>Home/adminDashboard"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -295px; margin-top:-10px;" />
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -295px; margin-top:-10px;" />
 	</a>
 	
 	<?php 
@@ -45,8 +45,8 @@ if ($load)	{ ?>
 <?php } else { ?>	
 	<div id=edit>
 	<h1> Item Description </h1>
-			<a href="<?php echo base_url();?>Manager/listItemUpdate"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -815px; margin-top:-50px;" />
+		<a href="<?php echo base_url();?>Manager/listItemUpdate"> 
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -815px; margin-top:-50px;" />
 	</a>
 	
 		<table class="table table-bordered table-inverse">
@@ -77,8 +77,12 @@ if ($load)	{ ?>
 		?>	
 	</table>
 </div>	
-<?php } ?>
+<?php 
+	}	
+?>
 </div>
 
 </body>
 </html>
+
+//Aman

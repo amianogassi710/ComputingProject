@@ -4,16 +4,6 @@ html{
 	position:absolute;
 }
 
-.update{
-	margin-top: -57px;
-    margin-left: 259px;
-}
-
-.logout{
-	margin-left: 1073px;
-    margin-top: -96px;
-}
-
 .container1{
 	margin-left:20px;
 	margin-top:300px;
@@ -34,3 +24,5 @@ table td{
 table th{
 	text-align:center;
 }
+
+//Aman

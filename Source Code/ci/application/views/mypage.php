@@ -1,1 +1,0 @@
-This is my Sarance the hero bad boy.

@@ -25,7 +25,6 @@ html{
 	padding:0 20px;
 }
 
-
 .styled-select select {
   width: 300px;
   font-size:14pt;
@@ -49,10 +48,4 @@ table td{
 	color:white;
 }
 
-
-.back{
-    margin-left: 8px;
-    margin-top: -40px;
-    position: absolute;
-    font-size: 23px;
-}
+//Aman

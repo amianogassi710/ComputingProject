@@ -71,4 +71,11 @@ class Home extends CI_Controller {
 		}
 	}
 	
+	public function viewTransaction(){
+		$load=TRUE;
+				$data1['load']=$load;
+
+		$this->load->view('ViewTransaction',$data1);
+	}
+	
 }
