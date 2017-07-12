@@ -9,9 +9,10 @@ html{
 	text-align:center;
 	border-radius:4px;
 	margin:0 auto;
-	margin-top:100px;
+	margin-top:60px;
 	margin-left:400px;
-	position:fixed;
+	position:absolute;
+	margin-bottom:40px;
 }
 
 button.accordion {

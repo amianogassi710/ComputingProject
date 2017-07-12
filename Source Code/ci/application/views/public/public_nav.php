@@ -29,6 +29,7 @@
 				<li><a href="<?php echo site_url('Home/index#menu') ?>" class="smoothScroll">SPECIAL MENU</a></li>
 				<li><a href="<?php echo site_url('Home/index#map') ?>" class="smoothScroll">MAP</a></li>
 				<li><a href="<?php echo site_url('Home/index#contact') ?>" class="smoothScroll">CONTACT</a></li>
+				<li><a href="<?php echo base_url();?>assets/UserGuide.pdf" class="smoothScroll">USER GUIDE</a></li>
 				<li><a href="<?php echo site_url('Home/login') ?>" class="smoothScroll">LOGIN</a></li>
 			</ul>
 		</div>

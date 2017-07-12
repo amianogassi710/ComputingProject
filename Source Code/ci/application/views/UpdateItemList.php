@@ -84,5 +84,3 @@ if ($load)	{ ?>
 
 </body>
 </html>
-
-//Aman

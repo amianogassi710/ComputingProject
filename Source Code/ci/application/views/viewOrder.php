@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title> Pending Order </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_viewOrder.css">
 
@@ -12,7 +13,7 @@
 <div class="container1">
 <h1> Order Pending </h1>
 <a href="<?php echo base_url();?>Home/AdminDashboard"> 
-		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -1175px; margin-top:-60px;" />
+	<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -1175px; margin-top:-60px;" />
 </a>
 <table class="table">
   <thead>

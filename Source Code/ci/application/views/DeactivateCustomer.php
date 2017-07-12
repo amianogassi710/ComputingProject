@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paradise Food Land</title>
+	<title>Deactivate Customer</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_deactivateCustomer.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 </head>
 
 <body>
-<?php include 'public/public_nav.php'; ?>
+<?php include 'public/public_nav_M.php'; ?>
 
-
-
-<?php if ($load){ ?>
+<?php 
+	if ($load){ 
+	?>
 <div class="container1">
 	<h1> Select Customer </h1>
 	<a href="<?php echo base_url();?>Home/adminDashboard"> 
@@ -29,9 +29,12 @@
 		</div>
 	</form>
 </div>	
-<?php } else { ?> 	
+<?php 
+	} 
+	else { 
+?> 	
 <div class="container2">
-<h1> Select Item for Delete</h1>
+<h1> Deactivate Customer</h1>
 	<a href="<?php echo base_url();?>Home/deactivateCustomer"> 
 		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -435px; margin-top:-30px;" />
 	</a>
@@ -58,7 +61,9 @@
 		</tbody>
 	</table>
 </div>
-<?php } ?>
+<?php 
+	} 
+?>
 
 </body>
 </html>

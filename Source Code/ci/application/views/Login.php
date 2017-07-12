@@ -10,6 +10,11 @@
 <?php include 'public/public_nav.php'; ?>
 
 <div class="container1">
+	
+	<span id="error" style="color:white;"> 
+			<br> <?php echo validation_errors(); ?> 
+	</span>
+	
 	<img src="<?php echo site_url('assets/images/rsz_user.png') ?>">
 	<form action="<?php echo base_url();?>Customer/login" method="post">
 		<div class="form-input">
@@ -20,7 +25,7 @@
 		</div>
 	</form>
 	<br> <a href="#" style="color:white;"> Forget Password ? </a>
-	<br> <br> <a href="<?php echo site_url('Home/signup') ?>" style="color:white;"> Not Register Yet? Register Now!! </a>
+	<br> <br> <a href="<?php echo site_url('Home/signup') ?>" style="color:white;"> Not Registered Yet? Register Now!! </a>
 </div>
 
 </body>

@@ -32,10 +32,12 @@ class Customer extends CI_Controller {
 			$data['CustomerMessage']=$this->CustomerModel->getRegister
 							($firstname,$lastname,$email,$username,$password,
 							$mobilenumber,$district,$street);
-							
-			$this->load->view('Login');
+			echo "<script>
+						alert('Successfully Registered');
+						window.location.href='login';
+					</script>";
 		} else {
-			echo validation_errors();
+			$this->load->view('Signup');
 		}
 	}	
 	
@@ -63,7 +65,10 @@ class Customer extends CI_Controller {
 					return redirect('Customer/viewItem');
 				}
 			} else {
-				echo ("Password not match");
+				echo "<script>
+						alert('Password Mismatch');
+						window.location.href='login';
+					</script>";
 			}
 		} else {
 			$this->load->view('Login');
@@ -143,7 +148,7 @@ class Customer extends CI_Controller {
 			$profile=$this->CustomerModel->updateUserProfile
 							($sessionData);
 				
-		$this->load->view('ProfileUpdate',['profile'=>$profile]);
+			$this->load->view('ProfileUpdate',['profile'=>$profile]);
 		} else{
 			$this->load->view('Login');
 		}
@@ -176,12 +181,19 @@ class Customer extends CI_Controller {
 							($customerID,$firstname,$lastname,$email,$username,
 							$mobilenumber,$district,$street);
 							
-			redirect(site_url('Customer/updateProfile'));					
+			echo "<script>
+						alert('Profile Successfully Updated');
+						window.location.href='updateProfile';
+					</script>";					
 		} else {
-			echo validation_errors();
+			echo "<script>
+						alert('Validation Error');
+						window.location.href='updateProfile';
+					</script>";	
 		}
 	}
 	
+	//View Item Info
 	public function viewItemDetails($itemID){
 		$sessionData=$this->session->userdata('customerID');
 		if($sessionData!=''){
@@ -189,8 +201,6 @@ class Customer extends CI_Controller {
 			
 			$data['ItemInfo']=$this->CustomerModel->viewItemDetails
 							($itemID);
-			// $data['ItemImage']=$this->CustomerModel->viewItemImage
-							// ($itemID);
 			$this->load->view('ItemDetails',$data);
 		} else{
 			$this->load->view('Login');

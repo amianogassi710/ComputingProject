@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Welcome Admin ( <?php $sessionData1=$this->session->userdata('username');  ?> 
-					<?php echo $sessionData1;?> )</title>
+		<?php echo $sessionData1;?> )</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_AdminDashboard.css">
 </head>
 <body>
@@ -11,43 +11,37 @@
 
 <div class="container1">
 	<h2> <?php $sessionData1=$this->session->userdata('username');  ?> 
-				Welcome	<?php echo $sessionData1;?></h2>
-
+		Welcome	<?php echo $sessionData1;?></h2>
+		
 	<button class="accordion">Add New</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Home/addCategory');?>"> Add New Category </a>	<br>
 		<a href="<?php echo site_url('Manager/listCategoryAddItem');?>"> Add New Items </a>	<br>
 	</div>
-
 	<button class="accordion">Select/View</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/listCategory');?>"> View All Category </a>	<br>
 		<a href="<?php echo site_url('Manager/listItemWithCategory');?>"> Select All Items </a>	<br>
 		<a href="<?php echo site_url('Manager/listCustomer');?>"> Registered Customers </a>	<br>
 	</div>
-
 	<button class="accordion">Update</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/listCategoryUpdate');?>"> Update Category </a> <br>
 		<a href="<?php echo site_url('Manager/listItemUpdate');?>"> Update Items </a> <br>
 	</div>
-	
 	<button class="accordion">Delete</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/listCategoryDelete');?>"> Delete Category </a> <br>
 		<a href="<?php echo site_url('Manager/listCategoryForDelete');?>"> Delete Items </a> <br>
 	</div>
-	
 	<button class="accordion">Deactivate Customer</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Home/deactivateCustomer');?>"> Deactivate Customer </a> <br>
 	</div>
-	
 	<button class="accordion">Change Item Status</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/checkStatus');?>"> Change Item Status </a> <br>
 	</div>
-	
 	<button class="accordion">View Order</button>
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/viewOrder');?>"> View Order </a> <br>
@@ -56,7 +50,10 @@
 	<div class="panel">
 		<a href="<?php echo site_url('Manager/viewOrderHistory');?>"> View Order History</a> <br>
 	</div>
-	
+	<button class="accordion">View Transaction</button>
+	<div class="panel">
+		<a href="<?php echo site_url('Home/viewTransaction');?>"> View Transaction </a> <br>
+	</div>
 </div>
 
 <script>

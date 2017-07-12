@@ -47,6 +47,7 @@ class CartModel extends CI_Model{
 		return $query->result();
 	}
 	
+	
 	public function confirmUserOrder($sessionData){
 		$array=array(
 			"confirmUserOrder"=>'Yes',

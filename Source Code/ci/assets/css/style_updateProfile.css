@@ -34,12 +34,6 @@ input[type="text"], input[type="password"], input[type="email"]{
     margin-top: 9px;
 }
 
-
-.btn-info{
-	margin-top:20px;
-	margin-left:190px;
-}
-
 th{
 	text-align: center;
 }

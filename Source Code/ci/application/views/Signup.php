@@ -9,8 +9,12 @@
 
 <?php include 'public/public_nav.php'; ?>
 
-<div>
 <div class="container2">
+	
+	<span id="error" style="color:white;"> 
+		<?php echo validation_errors(); ?> 
+	</span>
+
 	<form action="<?php echo base_url();?>Customer/register" method="post">
 		<div class="form-input">
 			
@@ -26,17 +30,19 @@
 				<option value="kathmandu"> Kathmandu </option>
 				<option value="lalitpur"> Lalitpur </option>
 			</select>
-			<div style="margin-top: -9px;"> <br>
+			</div>
+			<div style="margin-top: 2px;margin-left:5px;"> <br>
 			<input type="text" placeholder="Street" name="street" style="margin-bottom: 24px;"> <br>
-			<button type="reset" name="cancel" class="btn-cancel"> RESET </button>
-			<button type="submit" name="signup" class="btn-login"> SIGNUP </button>
+			<button type="reset" name="cancel" class="btn btn-warning"> RESET </button>
+			<button type="submit" name="signup" class="btn btn-success"> SIGNUP </button>
+			</div>
 			<br>
 			<div style="margin-top:8px;">
-				<a href="<?php echo site_url('Home/login') ?>" style="color:red;"> Already Registered? </a>
+				<a href="<?php echo site_url('Home/login') ?>" style="color:white;"> Already Registered? </a>
 			</div>
 		</div>
 	</form>
 </div>
-</div>
+
 </body>
 </html>

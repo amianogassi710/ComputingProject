@@ -10,10 +10,10 @@
 <body>
 <?php include 'public/public_nav.php'; ?>
 <div class="container1">
-		<h1> Update Profile </h1>
-			<a href="<?php echo base_url();?>Customer/viewItem"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px;" />
-			</a>
+	<h1> Update Profile </h1>
+		<a href="<?php echo base_url();?>Customer/viewItem"> 
+			<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -415px;" />
+		</a>
 
 <?php
 	foreach($profile as $row){
@@ -82,7 +82,7 @@
 		
 		<tr>
 			<td> </td>
-			<td> <button type="submit" name="add" class="btn btn-info"> UPDATE </button> </td>
+			<td> <button type="submit" name="add" class="btn btn-success"> UPDATE </button> </td>
 		</tr>
 	</form>	
 	

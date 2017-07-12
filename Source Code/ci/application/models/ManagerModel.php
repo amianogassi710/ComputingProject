@@ -55,10 +55,31 @@ class ManagerModel extends CI_Model{
 	}
 	
 	// List All Items with Category
-	public function listAllItem(){
-		$q=$this->db->get('item');
-		return $q->result();
-	}
+	function getItem($limit, $start, $st = "", $orderField, $orderDirection){
+        $query = $this->db->select('*')
+				->from('item')
+				->join('category','category.categoryID=item.categoryID')
+				->or_like('item.itemName', $st)
+				->or_like('category.categoryName', $st)	
+				->limit($limit, $start)
+				->order_by($orderField, $orderDirection)
+				->get();
+        return $query->result();
+        
+    }
+
+    function countItem($limit, $start, $st = "", $orderField, $orderDirection)
+    {
+        $query = $this->db->select('*')
+				->from('item')
+				->join('category','category.categoryID=item.categoryID')
+				->or_like('item.itemName', $st)
+				->or_like('category.categoryName', $st)
+				->order_by($orderField, $orderDirection)
+				->get();
+        return $query->num_rows();
+    }
+	
 		
 	// Update Items
 	public function searchItem($itemID){
@@ -103,7 +124,6 @@ class ManagerModel extends CI_Model{
 		$result=$this->db->delete("item");
 		return "data deleted";
 	}
-	//Aman
 	
 	// List All Customers
 	public function listAllCustomer(){
@@ -119,7 +139,6 @@ class ManagerModel extends CI_Model{
 		$this->db->where('customerID',$customerID);
 		$this->db->or_where('customerFirstName',$customerFirstName);
 		$this->db->or_where('customerLastName',$customerLastName);
-
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -147,64 +166,24 @@ class ManagerModel extends CI_Model{
 		return "data updated";	
 	}
 	
-	// List All Items with Category	
-	public function loadItemWithCategory($fullname){
-		$this->db->select('itemName');
-		$this->db->from('item');
-		$this->db->join('category', 'category.categoryID = item.categoryID');
-		$this->db->where('category.categoryName',$fullname);
-
-		$query = $this->db->get();
-		return $query->result();	
-	}
+	// Aman
 	
 	// View Customer Order
 	public function viewCustomerOrder(){
 		$this->db->select('*');
 		$this->db->from('orders');
 		$this->db->where('confirmUserOrder','Yes');
-		
-		
 		$this->db->order_by("customerID");
 		$query = $this->db->get();
 		return $query->result();
 	}
 		
-	function getItem($limit, $start, $st = "", $orderField, $orderDirection)
-    {
-        
-        $query = $this->db->select('*')
-						->from('item')
-						->join('category','category.categoryID=item.categoryID')
-						->or_like('item.itemName', $st)
-						->or_like('category.categoryName', $st)
-						// ->or_like('item.itemDescription', $st)
-						->limit($limit, $start)
-						->order_by($orderField, $orderDirection)
-						->get();
-        return $query->result();
-        
-    }
-
-    function countItem($limit, $start, $st = "", $orderField, $orderDirection)
-    {
-        
-		$query = $this->db->select('*')
-						->from('item')
-						->join('category','category.categoryID=item.categoryID')
-						->or_like('item.itemName', $st)
-						->or_like('category.categoryName', $st)
-						// ->or_like('item.itemDescription', $st)
-						->order_by($orderField, $orderDirection)
-						->get();
-        return $query->num_rows();
-    }
-	
 	// Update Item Status
 	public function updateItemStatus($deliverStatus,$paymentStatus,$orderID){
 		$arr=array("orderID"=>$orderID,
-		"deliveryStatus"=>$deliverStatus,
-		"paymentStatus"=>$paymentStatus);
+					"deliveryStatus"=>$deliverStatus,
+					"paymentStatus"=>$paymentStatus
+				);
 		$this->db->set('statusUpdatedTime','NOW()',FALSE);
 		$this->db->where("orderID",$orderID);
 		$this->db->update('orders',$arr);
@@ -225,20 +204,33 @@ class ManagerModel extends CI_Model{
 		return $query->result();
 	}
 
+	// View Transaction	
 	public function viewPaymentTransaction($Sdate,$Edate){
 		$this->db->select('*');
-// $this->db->select_sum('totalAmount');
-
-		$this->db->from('orders');		
-		$this->db->where('dateAdded >=', $Sdate);
-		$this->db->where('dateAdded <=', $Edate);
+		$this->db->from('ordershistory');		
+		$this->db->where('timeAdded >=', $Sdate);
+		$this->db->where('timeAdded <=', $Edate);
 		$result= $this->db->get();
-		return $result->result();
+		return $result->result();	
+	}
 
-	
-		
-}
+	//Need to delete
+	// List All Items with Category	
+
+	public function listAllItem(){
+		$q=$this->db->get('item');
+		return $q->result();
+	}
+
+	public function loadItemWithCategory($fullname){
+		$this->db->select('itemName');
+		$this->db->from('item');
+		$this->db->join('category', 'category.categoryID = item.categoryID');
+		$this->db->where('category.categoryName',$fullname);
+
+		$query = $this->db->get();
+		return $query->result();	
+	}
 
 }	
-
 ?>

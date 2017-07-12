@@ -18,7 +18,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 <?php include 'public/public_nav_C.php'; ?>
 
-		
 	<div class=" container1 container" style="margin-top:75px;margin-left:96px;/* width: 100px; */position: absolute;">
 		<div class="row">
 			<div class="col-sm-3" style="margin-right: 25px;margin-left: 80px;">

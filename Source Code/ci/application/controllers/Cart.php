@@ -5,14 +5,12 @@ class Cart extends CI_Controller {
 
 	// Show Items Of Cart
 	public function viewCartDetails(){
-		// echo "Aman"; exit;
 		$sessionData=$this->session->userdata('customerID');
 		if($sessionData!=''){
 			$this->load->model('CartModel');
 			
 			$cartItem=$this->CartModel->viewItemsInCart
 							($sessionData);
-			// redirect(site_url('Customer/listItem'));	
 			$this->load->view('MyCart',['cartItem'=>$cartItem]);
 		} else{
 			redirect('Customer/Login');
@@ -21,22 +19,36 @@ class Cart extends CI_Controller {
 	
 	// Delete Items From Cart
 	public function deleteCartItem($orderID){
-		$this->load->model('CartModel');
-		$check=$this->CartModel->deleteItemInCart($orderID);
-		redirect(site_url('Cart/viewCartDetails'));
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('CartModel');
+			$check=$this->CartModel->deleteItemInCart($orderID);
+			redirect(site_url('Cart/viewCartDetails'));
+		} else{
+			redirect('Customer/Login');
+		}	
 	}
 	
 	// Update Item In Cart
 	public function updateCartItem(){
-		$itemQuantity=$this->input->post('itemQuantity');
-		$cartID=$this->input->post('orderID');
-		$this->load->model('CartModel');
-		$check=$this->CartModel->updateItemInCart($cartID,$itemQuantity);
-		if ($check){
-			redirect(site_url('Cart/viewCartDetails'));
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$itemQuantity=$this->input->post('itemQuantity');
+			$cartID=$this->input->post('orderID');
+			$this->load->model('CartModel');
+			$check=$this->CartModel->updateItemInCart($cartID,$itemQuantity);
+			if ($check){
+				redirect(site_url('Cart/viewCartDetails'));
+			} else{
+				echo "<script>
+						alert('Cart Not Updated');
+						window.location.href='viewCartDetails';
+					</script>";
+			}
 		} else{
-			echo "Not done";
-		}
+			redirect('Customer/Login');
+		}	
+		
 	}
 	
 	// Generate Invoice

@@ -333,44 +333,64 @@ class Manager extends CI_Controller {
 				</script>";
 		}
 	}
-	//Aman
 	
 	//List All Customers
 	public function listCustomer() {
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->listAllCustomer();
-		$this->load->view('SelectAllCustomer',$data);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->listAllCustomer();
+			$this->load->view('SelectAllCustomer',$data);
+		} else{
+			$this->load->view('Login');
+		}
 	}
 	
 	// Deactivate Customer
 	public function searchCustomer(){
-		$customerID=$this->input->post('customerID');
-		$customerFirstName=$this->input->post('customerFirstName');
-		$customerLastName=$this->input->post('customerLastName');
-		$this->load->model('ManagerModel');
-		$data['records']=$this->ManagerModel->searchSpecificCustomer
-				($customerID,$customerFirstName,$customerLastName);
-		$load=FALSE;
-		$data1['load']=$load;
-		$all=$data + $data1;
-		$this->load->view('DeactivateCustomer',$all);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$customerID=$this->input->post('customerID');
+			$customerFirstName=$this->input->post('customerFirstName');
+			$customerLastName=$this->input->post('customerLastName');
+			$this->load->model('ManagerModel');
+			$data['records']=$this->ManagerModel->searchSpecificCustomer
+					($customerID,$customerFirstName,$customerLastName);
+			$load=FALSE;
+			$data1['load']=$load;
+			$all=$data + $data1;
+			$this->load->view('DeactivateCustomer',$all);
+		} else{
+			$this->load->view('Login');
+		}
 	}
 	
 	public function deleteCustomer($customerID){
 		$this->load->model('ManagerModel');
 		$check=$this->ManagerModel->deactivateCustomer($customerID);
 		if ($check){
-			echo "Done";
+			echo "<script>
+					alert('Customer Successfully Deactivated');
+					window.location.href='/ci/Home/deactivateCustomer';
+				</script>";
 		} else{
-			echo "Not done";
+			echo "<script>
+					alert('Customer Deactivate Unsuccessfull');
+					window.location.href='/ci/Home/deactivateCustomer';
+				</script>";
 		}
 	}
 	
 	// Change Item Status
 	public function checkStatus(){
-		$this->load->model('ManagerModel');
-		$check['records']=$this->ManagerModel->checkItemStatus();
-		$this->load->view('ChangeItemStatus',$check);
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$this->load->model('ManagerModel');
+			$check['records']=$this->ManagerModel->checkItemStatus();
+			$this->load->view('ChangeItemStatus',$check);
+		} else{
+			$this->load->view('Login');
+		}
 	}
 	
 	public function changeStatus(){
@@ -381,20 +401,18 @@ class Manager extends CI_Controller {
 		redirect('Manager/checkStatus');	
 	}
 	
+	//Aman
 	
 	
 	// View Customer Order
 	public function viewOrder(){
 		$sessionData=$this->session->userdata('customerID');
-
 		if($sessionData!=''){
 			$this->load->model('ManagerModel');
-			
 			$data['records']=$this->ManagerModel->viewCustomerOrder();
 			$this->load->view('viewOrder',$data);
-			
 		} else{
-			echo "sorry";
+			$this->load->view('Login');
 		}
 	}	
 
@@ -417,30 +435,31 @@ class Manager extends CI_Controller {
 	// View Customer Order History
 	public function viewOrderHistory(){
 		$sessionData=$this->session->userdata('customerID');
-
 		if($sessionData!=''){
 			$this->load->model('ManagerModel');
-			
 			$data['records']=$this->ManagerModel->viewCustomerOrderHistory();
 			$this->load->view('viewOrderHistory',$data);
-			
 		} else{
-			echo "sorry";
+			$this->load->view('Login');
 		}
 	}	
- 
+	
+ 	// View Transaction	
 	public function viewTransaction(){
-		$Sdate= $this->input->post('Sdate');
-		$Edate= $this->input->post('Edate');
-		$this->load->model('ManagerModel');
-			
-		$data['records']=$this->ManagerModel->viewPaymentTransaction($Sdate,$Edate);
-		$load=FALSE;
-		$data1['load']=$load;
-		$all=$data + $data1;
-		            $this->load->view('ViewTransaction',$all);
-
+		$sessionData=$this->session->userdata('customerID');
+		if($sessionData!=''){
+			$Sdate= $this->input->post('Sdate');
+			$Edate= $this->input->post('Edate');
+			$this->load->model('ManagerModel');	
+			$data['records']=$this->ManagerModel->viewPaymentTransaction($Sdate,$Edate);
+			$load=FALSE;
+			$data1['load']=$load;
+			$all=$data + $data1;
+			$this->load->view('ViewTransaction',$all);
+		} else{
+			$this->load->view('Login');
+		}
 	}
  
- }
+}
 ?>

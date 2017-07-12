@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paradise Food Land</title>
+	<title>Change Item Status</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_changeItemStatus.css">
 </head>
 
@@ -12,7 +12,7 @@
 <div class="container1">
 	<h1> Change Item Status </h1>
 	<a href="<?php echo base_url();?>Home/adminDashboard"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -605px; margin-top:-50px;" />
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -605px; margin-top:-50px;" />
 	</a>
 	<?php 
 		foreach ($records as $row) {
@@ -30,17 +30,14 @@
 			<?php	
 				if ($status === 'Not Available'){ 
 			?>
-					<option value="<?=$row->itemStatus;?>"> <?=$row->itemStatus;?> </option>
-					<option> Available </option> 
-				
+				<option value="<?=$row->itemStatus;?>"> <?=$row->itemStatus;?> </option>
+				<option> Available </option> 		
 			<?php 
 				} else 
 				{ 
-			?>
-				
-					<option value="<?=$row->itemStatus;?>"> <?=$row->itemStatus;?> </option>
-					<option> Not Available </option> 
-				
+			?>		
+				<option value="<?=$row->itemStatus;?>"> <?=$row->itemStatus;?> </option>
+				<option> Not Available </option> 
 			<?php 
 				} 
 			?>	

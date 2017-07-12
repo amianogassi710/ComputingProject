@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Paradise Food Land</title>
+	<title>Registered Customer</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style_selectCustomer.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 		
@@ -14,7 +14,7 @@
 <div class="container1">
 	<h1> Customer List </h1>
 	<a href="<?php echo base_url();?>Home/adminDashboard"> 
-				<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -915px; margin-top:-40px;" />
+		<img src="<?php echo base_url();?>assets/images/back.png" style="margin-left: -915px; margin-top:-40px;" />
 	</a>
 		<table class="table table-bordered table-inverse">
 		<thead>

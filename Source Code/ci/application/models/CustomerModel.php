@@ -30,9 +30,7 @@ class CustomerModel extends CI_Model{
 	}
 	
 	// Show Menu For Customer	
-	function getItem($limit, $start, $st = "", $orderField, $orderDirection)
-    {
-        
+	function getItem($limit, $start, $st = "", $orderField, $orderDirection){
         $query = $this->db->select('*')
 						->from('item')
 						->join('category','category.categoryID=item.categoryID')
@@ -42,12 +40,9 @@ class CustomerModel extends CI_Model{
 						->order_by($orderField, $orderDirection)
 						->get();
         return $query->result();
-        
     }
 
-    function countItem($limit, $start, $st = "", $orderField, $orderDirection)
-    {
-        
+    function countItem($limit, $start, $st = "", $orderField, $orderDirection){
 		$query = $this->db->select('*')
 						->from('item')
 						->join('category','category.categoryID=item.categoryID')
@@ -60,10 +55,6 @@ class CustomerModel extends CI_Model{
 	
 	// Add Items To Cart
 	public function addItemToCart($sessionData,$itemID){
-		echo $sessionData;
-		echo "<br>";
-		//echo $itemID;
-		echo "<br>";
 		$array=array(
 			"customerID"=>$sessionData,
 			"itemID"=>$itemID
@@ -97,6 +88,7 @@ class CustomerModel extends CI_Model{
 		return "data updated";
 	}
 	
+	//View Item Info
 	public function viewItemDetails($itemID){
 		$query = $this->db->select('*')
 						->from('item')
@@ -111,6 +103,4 @@ class CustomerModel extends CI_Model{
 	}
 
 }
-
-
 ?>

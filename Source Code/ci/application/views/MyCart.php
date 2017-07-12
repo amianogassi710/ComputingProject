@@ -10,7 +10,7 @@
 
 <?php include 'public/public_nav_C.php'; ?>
 			
-			<div style="margin-top:70px; margin-left:620px;position:absolute;"> <h1> My Cart </h1> </div>
+	<div style="margin-top:70px; margin-left:620px;position:absolute;"> <h1> My Cart </h1> </div>
 
 	<div class="container1">
 		<table class="table table-hover">
